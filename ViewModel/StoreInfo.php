@@ -61,7 +61,7 @@ class StoreInfo implements ArgumentInterface
      * @param string $attributeGroup
      * @return mixed
      */
-    public function getStoreEmail(string $attribute, $attributeGroup = "ident_general")
+    public function getStoreEmail(string $attribute, string $attributeGroup = "ident_general")
     {
         $path = sprintf('trans_email/%2$s/%1$s', $attribute, $attributeGroup);
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
