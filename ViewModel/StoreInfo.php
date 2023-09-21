@@ -9,25 +9,32 @@
 namespace Siteation\StoreInfo\ViewModel;
 
 use Magento\Directory\Api\CountryInformationAcquirerInterface as CountryInfoAcq;
+use Magento\Directory\Model\Country;
 use Magento\Directory\Model\ResourceModel\Region\Collection as RegionCollection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Directory\Model\CountryFactory;
 
 class StoreInfo implements ArgumentInterface
 {
     private $scopeConfig;
     private $countryInfoAcq;
     private $regionCollection;
+    private $countryFactory;
+
+    private $countryName = null;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         RegionCollection $regionCollection,
-        CountryInfoAcq $countryInfoAcq
+        CountryInfoAcq $countryInfoAcq,
+        CountryFactory $countryFactory
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->countryInfoAcq = $countryInfoAcq;
         $this->regionCollection = $regionCollection;
+        $this->countryFactory = $countryFactory;
     }
 
     private function getRegionNameById(int $id): string
@@ -104,15 +111,17 @@ class StoreInfo implements ArgumentInterface
 
     public function getCountry(): string
     {
-        $countryId = (string) $this->getCountryId();
-        $countryName = '';
-        
-        if ($countryId) {
-            $countryInfo = $this->countryInfoAcq->getCountryInfo($countryId);
-            $countryName = $countryInfo->getFullNameLocale();
+        if (null === $this->countryName) {
+            $countryId = (string)$this->getCountryId();
+            $this->countryName = '';
+
+            if ($countryId) {
+                $country = $this->countryFactory->create()->loadByCode($countryId);
+                $this->countryName = (string)$country->getName();
+            }
         }
 
-        return $countryName;
+        return $this->countryName;
     }
 
     public function getRegionId(): string
