@@ -8,7 +8,7 @@
 
 namespace Siteation\StoreInfo\ViewModel;
 
-use Magento\Directory\Api\CountryInformationAcquirerInterface as CountryInfoAcq;
+use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\ResourceModel\Region\Collection as RegionCollection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -17,16 +17,16 @@ use Magento\Store\Model\ScopeInterface;
 class StoreInfo implements ArgumentInterface
 {
     private $scopeConfig;
-    private $countryInfoAcq;
+    private $countryFactory;
     private $regionCollection;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        RegionCollection $regionCollection,
-        CountryInfoAcq $countryInfoAcq
+        CountryFactory $countryFactory,
+        RegionCollection $regionCollection
     ) {
         $this->scopeConfig = $scopeConfig;
-        $this->countryInfoAcq = $countryInfoAcq;
+        $this->countryFactory = $countryFactory;
         $this->regionCollection = $regionCollection;
     }
 
@@ -104,12 +104,12 @@ class StoreInfo implements ArgumentInterface
 
     public function getCountry(): string
     {
-        $countryId = (string) $this->getCountryId();
+        $countryId = $this->getCountryId();
         $countryName = '';
-        
+
         if ($countryId) {
-            $countryInfo = $this->countryInfoAcq->getCountryInfo($countryId);
-            $countryName = $countryInfo->getFullNameLocale();
+            $country = $this->countryFactory->create()->loadByCode($countryId);
+            $countryName = (string) $country->getName();
         }
 
         return $countryName;
