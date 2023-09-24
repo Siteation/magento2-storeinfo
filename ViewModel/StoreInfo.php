@@ -123,12 +123,9 @@ class StoreInfo implements ArgumentInterface
     public function getRegion(): string
     {
         $id = $this->getRegionId();
-
-        if (is_numeric($id)) {
-            return (string) $this->getRegionNameById(intval($id));
-        }
-
-        return (string) $id;
+        return (string) is_numeric($id)
+            ? $this->getRegionNameById(intval($id))
+            : $id;
     }
 
     public function getStreetLine1(): string
