@@ -24,9 +24,19 @@ bin/magento module:enable Siteation_StoreInfo
 
 ## How to use
 
-By default, this module does not load any content. This approach was chosen intentionally to ensure that it doesn't impose any specific styling or templating on your theme.
+By default, this module does not load any content.
 
-Instead, we provide this module as a versatile toolkit that you can seamlessly integrate into your theme. To get started, you can refer to the sample configurations and usage examples provided below. This empowers you to tailor the module to your specific needs and maintain full control over the styling and templating to perfectly match your theme.
+This approach was chosen intentionally to ensure that it doesn't impose any specific styling or templating on your theme.
+
+Instead, we provide this module as a versatile toolkit that you can seamlessly integrate into your theme.
+
+To get started, you can refer to the sample configurations and usage examples provided below.
+
+This empowers you to tailor the module to your specific needs and maintain full control over the styling and templating to perfectly match your theme.
+
+> We also offer a StoreInfo Extra module that add more fields,
+> for example social media links,
+> check it out here: [StoreInfo Extra](https://github.com/Siteation/magento2-storeinfo-extra)
 
 ### Adding a address block
 
