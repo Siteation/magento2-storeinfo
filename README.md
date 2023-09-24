@@ -19,7 +19,8 @@ composer require siteation/magento2-storeinfo
 bin/magento module:enable Siteation_StoreInfo
 ```
 
-> **Note** This Module requires Magento 2.3 or higher!
+> [!NOTE]
+> This Module requires Magento 2.3 or higher!
 > For more requirements see the `composer.json`.
 
 ## How to use
@@ -34,6 +35,7 @@ To get started, you can refer to the sample configurations and usage examples pr
 
 This empowers you to tailor the module to your specific needs and maintain full control over the styling and templating to perfectly match your theme.
 
+> [!IMPORTANT]
 > We also offer a StoreInfo Extra module that add more fields,
 > for example social media links,
 > check it out here: [StoreInfo Extra](https://github.com/Siteation/magento2-storeinfo-extra)
