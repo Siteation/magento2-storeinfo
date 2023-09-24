@@ -24,9 +24,9 @@ bin/magento module:enable Siteation_StoreInfo
 
 ## How to use
 
-By defaut this module loads nothing.
+By default, this module does not load any content. This approach was chosen intentionally to ensure that it doesn't impose any specific styling or templating on your theme.
 
-Use one of the samples to get started.
+Instead, we provide this module as a versatile toolkit that you can seamlessly integrate into your theme. To get started, you can refer to the sample configurations and usage examples provided below. This empowers you to tailor the module to your specific needs and maintain full control over the styling and templating to perfectly match your theme.
 
 ### Adding a address block
 
@@ -54,9 +54,11 @@ in your template.
 
 ```xml
 <referenceContainer name="footer">
-    <block name="footer.store.info"
+    <block
+        name="footer.store.info"
         as="footer-store-info"
-        template="Siteation_StoreInfo::luma/store-address.phtml">
+        template="Siteation_StoreInfo::luma/store-address.phtml"
+    >
         <arguments>
             <argument name="viewModelStoreInfo" 
                 xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
@@ -74,8 +76,7 @@ First get the viewModal in your template.
 <details open><summary>Hyva - Sample Phtml file head</summary>
 
 ```php
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 use Hyva\Theme\Model\ViewModelRegistry;
 use Magento\Framework\View\Element\Template;
@@ -98,8 +99,7 @@ _For Luma templates,_
 _see the previous sample for the xml needed to load the viewModal._
 
 ```php
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
