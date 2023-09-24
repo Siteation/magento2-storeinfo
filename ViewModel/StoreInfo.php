@@ -173,17 +173,4 @@ class StoreInfo implements ArgumentInterface
     {
         return (string) $this->getStoreEmail('name', 'ident_support');
     }
-
-    /** @deprecated use `getEmail` instead, will be removed in v2 */
-    public function getEmailUs(): string
-    {
-        return (string) $this->getTransEmail('email');
-    }
-
-    /** @deprecated use `getStoreEmail` instead, will be removed in v2 */
-    public function getTransEmail(string $attribute)
-    {
-        $path = sprintf('trans_email/ident_general/%s', $attribute);
-        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
-    }
 }
