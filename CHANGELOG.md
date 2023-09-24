@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2023-09-24
+### Changed
+- Minimal dependencies to Magento 2.4, dropping support for Magento 2.3
+
 ## [2.0.1] - 2023-09-24
 ### Fixed
 - Fix localization error (thanks to @mgroensmit)

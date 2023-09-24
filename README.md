@@ -20,7 +20,7 @@ bin/magento module:enable Siteation_StoreInfo
 ```
 
 > [!NOTE]
-> This Module requires Magento 2.3 or higher!
+> This Module requires Magento 2.4 or higher!
 > For more requirements see the `composer.json`.
 
 ## How to use
