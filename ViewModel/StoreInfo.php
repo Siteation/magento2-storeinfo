@@ -66,7 +66,7 @@ class StoreInfo implements ArgumentInterface
         return (string) $this->moduleConfig->getStoreInfo('whatsapp_number');
     }
 
-    public function getOpeningHours(): string
+    public function getHours(): string
     {
         return (string) $this->moduleConfig->getStoreInfo('hours');
     }
