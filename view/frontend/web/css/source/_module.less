@@ -1,0 +1,52 @@
+& when (@media-common = true) {
+    .message.global {
+        &.note {
+            .lib-message(@_message-type: global-note);
+            margin-bottom: 0;
+            text-align: center;
+        }
+    }
+
+    .footer-block {
+        display: inline-block;
+        padding-right: 50px;
+        vertical-align: top;
+    }
+
+    .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .action {
+            color: inherit;
+            text-decoration: none;
+
+            svg {
+                transition: transform 0.2s linear;
+            }
+
+            &:is(:hover, :focus) {
+                color: inherit;
+                text-decoration: none;
+
+                svg {
+                    transform: scale(.9);
+                }
+            }
+        }
+    }
+
+    .storeinfo {
+        address {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .footer.content {
+        .socials {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+}

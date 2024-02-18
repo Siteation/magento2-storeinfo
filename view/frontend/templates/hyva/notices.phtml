@@ -1,0 +1,28 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfoNotice;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var StoreInfoNotice $storeInfoNotice */
+
+$storeInfoNotice = $viewModels->require(StoreInfoNotice::class);
+?>
+
+<?php if ($message = $storeInfoNotice->getNotices()): ?>
+    <section class="message global bg-slate-700 text-slate-50 shadow-none m-0 py-4 px-0 rounded-none font-strong text-sm sm:text-base">
+        <div class="container text-center">
+            <p><?= $escaper->escapeHtml($message); ?></p>
+        </div>
+    </section>
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <referenceContainer name="after.body.start">
+        <block name="storeinfo.notices" template="Siteation_StoreInfo::hyva/notices.phtml"/>
+    </referenceContainer>
+
+    <referenceBlock name="footer-content">
+        <block
+            name="storeinfo.address"
+            template="Siteation_StoreInfo::hyva/address.phtml"
+        />
+        <block
+            name="storeinfo.hours"
+            template="Siteation_StoreInfo::hyva/hours.phtml"
+        />
+        <block
+            name="storeinfo.socials"
+            template="Siteation_StoreInfo::hyva/socials.phtml"
+        />
+    </referenceBlock>
+</page>

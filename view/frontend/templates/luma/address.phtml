@@ -1,0 +1,99 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfo;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfo $storeInfo */
+$storeInfo = $block->getData('viewModelStoreInfo');
+
+$storeNameFallback = parse_url($block->getBaseUrl())['host'];
+?>
+
+<div
+    class="storeinfo footer-block"
+    itemscope
+    itemtype="https://schema.org/Store"
+>
+    <div itemprop="name">
+        <strong><?= $escaper->escapeHtml($storeInfo->getStoreName() ?: $storeNameFallback); ?></strong>
+    </div>
+    <address
+        itemprop="address"
+        itemscope
+        itemtype="https://schema.org/PostalAddress"
+    >
+        <?php if ($address1 = $storeInfo->getStreetLine1()): ?>
+            <span itemprop="streetAddress">
+                <?= $escaper->escapeHtml($address1); ?>
+                <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
+                    <?= $escaper->escapeHtml($address2); ?>
+                <?php endif; ?>
+            </span>
+            <br>
+        <?php endif; ?>
+        <?php if ($postcode = $storeInfo->getPostcode()): ?>
+            <span itemprop="postalCode"><?= $escaper->escapeHtml($postcode); ?></span>
+        <?php endif; ?>
+        <?php if ($city = $storeInfo->getCity()): ?>
+            <span itemprop="addressLocality"><?= $escaper->escapeHtml($city); ?></span>
+            <br>
+        <?php endif; ?>
+        <?php if ($country = $storeInfo->getCountry()): ?>
+            <?php if ($region = $storeInfo->getRegion()): ?>
+                <span itemprop="addressRegion"><?= $escaper->escapeHtml($region); ?>,</span>
+            <?php endif; ?>
+            <span itemprop="addressCountry"><?= $escaper->escapeHtml($country); ?></span>
+        <?php endif; ?>
+    </address>
+    <dl>
+        <?php if ($phone = $storeInfo->getPhone()): ?>
+            <dt><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
+            <dd itemprop="telephone">
+                <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                    <?= $escaper->escapeHtml($phone); ?>
+                </a>
+            </dd>
+            <?php if ($extraPhone = $storeInfo->getExtraPhone()): ?>
+                <dd>
+                    <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($extraPhone)) ?>">
+                        <?= $escaper->escapeHtml($extraPhone); ?>
+                    </a>
+                </dd>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($phone = $storeInfo->getWhatsApp()): ?>
+            <dt><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
+            <dd>
+                <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                    <?= $escaper->escapeHtml($phone); ?>
+                </a>
+            </dd>
+        <?php endif; ?>
+        <?php if ($email = $storeInfo->getEmail()): ?>
+            <dt><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
+            <dd itemprop="email">
+                <a href="mailto:<?= $escaper->escapeHtml($email); ?>">
+                    <?= $escaper->escapeHtml($email); ?>
+                </a>
+            </dd>
+        <?php endif; ?>
+        <?php if ($vat_number = $storeInfo->getVatNumber()): ?>
+            <dt><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($vat_number); ?></dd>
+        <?php endif; ?>
+        <?php if ($coc_number = $storeInfo->getCocNumber()): ?>
+            <dt><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
+        <?php endif; ?>
+    </dl>
+</div>

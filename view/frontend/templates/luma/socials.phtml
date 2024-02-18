@@ -1,0 +1,108 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfoSocials;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var StoreInfoSocials $socials */
+
+$socials = $block->getData('viewModelStoreInfo');
+
+$socialsList = [];
+
+if ($socials->getLinkedIn()) {
+    array_push($socialsList, [
+        'type' => 'linkedin',
+        'link' => $socials->getLinkedIn(),
+        'title' => __('Go to our %1 page', 'LinkedIn')
+    ]);
+}
+
+if ($socials->getFacebook()) {
+    array_push($socialsList, [
+        'type' => 'facebook',
+        'link' => $socials->getFacebook(),
+        'title' => __('Go to our %1 page', 'Facebook')
+    ]);
+}
+
+if ($socials->getInstagram()) {
+    array_push($socialsList, [
+        'type' => 'instagram',
+        'link' => $socials->getInstagram()
+            ? 'https://www.instagram.com/' . $socials->getInstagram()
+            : '',
+        'title' => __('Explore our %1 page', 'Instagram')
+    ]);
+}
+
+if ($socials->getTwitter()) {
+    array_push($socialsList, [
+        'type' => 'twitter',
+        'link' => $socials->getTwitter()
+            ? 'https://twitter.com/' . $socials->getTwitter()
+            : '',
+        'title' => __('Visit %1 on Twitter for more', $socials->getTwitter())
+    ]);
+}
+
+if ($socials->getMastodon()) {
+    array_push($socialsList, [
+        'type' => 'mastodon',
+        'link' => $socials->getMastodon(),
+        'title' => __('Explore our %1 page', 'Mastodon')
+    ]);
+}
+
+if ($socials->getPinterest()) {
+    array_push($socialsList, [
+        'type' => 'pinterest',
+        'link' => $socials->getPinterest(),
+        'title' => __('Explore our %1 page', 'Pinterest')
+    ]);
+}
+
+if ($socials->getYouTube()) {
+    array_push($socialsList, [
+        'type' => 'youtube',
+        'link' => $socials->getYouTube(),
+        'title' => __('Go to our %1 page', 'YouTube')
+    ]);
+}
+
+if ($socials->getVimeo()) {
+    array_push($socialsList, [
+        'type' => 'vimeo',
+        'link' => $socials->getVimeo(),
+        'title' => __('View more on our %1 page', 'Vimeo')
+    ]);
+}
+
+if (!count($socialsList)) {
+    return '';
+}
+?>
+
+<div class="socials">
+    <?php foreach ($socialsList as $social): ?>
+        <a
+            class="action <?= $social['type']; ?>"
+            href="<?= $escaper->escapeHtml($social['link']); ?>"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="<?= $escaper->escapeHtml($social['title']); ?>"
+        >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
+                <use href="<?= $block->getViewFileUrl('Siteation_StoreInfo::images/socials.svg'); ?>#<?= $social['type']; ?>" />
+            </svg>
+        </a>
+    <?php endforeach; ?>
+</div>

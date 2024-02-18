@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+>
+    <referenceContainer name="after.body.start">
+        <block name="storeinfo.notices" template="Siteation_StoreInfo::luma/notices.phtml">
+            <arguments>
+                <argument name="viewModelStoreInfo"
+                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoNotice</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+
+    <referenceContainer name="footer">
+        <block name="storeinfo.address" template="Siteation_StoreInfo::luma/address.phtml">
+            <arguments>
+                <argument name="viewModelStoreInfo"
+                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
+            </arguments>
+        </block>
+        <block
+            name="storeinfo.hours"
+            template="Siteation_StoreInfo::luma/hours.phtml"
+        >
+            <arguments>
+                <argument name="viewModelStoreInfo"
+                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoHours</argument>
+            </arguments>
+        </block>
+        <block name="storeinfo.socials" template="Siteation_StoreInfo::luma/socials.phtml">
+            <arguments>
+                <argument name="viewModelStoreInfo"
+                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoSocials</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</page>

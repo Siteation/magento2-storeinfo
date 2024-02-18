@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
+>
+    <default>
+        <siteation_storeinfo>
+            <notices>
+                <enabled>0</enabled>
+                <message>Hello There, this your notices, sales, update e.t.c.</message>
+            </notices>
+            <opening_hours>
+                <enabled>0</enabled>
+                <daily_hours>
+                    <item1>
+                        <day>Monday</day>
+                        <hours>08:00 - 17:00</hours>
+                    </item1>
+                    <item2>
+                        <day>Thuesday</day>
+                        <hours>08:00 - 17:00</hours>
+                    </item2>
+                    <item3>
+                        <day>Wensday</day>
+                        <hours>08:00 - 17:00</hours>
+                    </item3>
+                    <item4>
+                        <day>Thursday</day>
+                        <hours>08:00 - 19:00</hours>
+                    </item4>
+                    <item5>
+                        <day>Friday</day>
+                        <hours>08:00 - 17:00</hours>
+                    </item5>
+                </daily_hours>
+            </opening_hours>
+        </siteation_storeinfo>
+    </default>
+</config>

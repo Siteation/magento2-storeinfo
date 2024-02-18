@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd"
+>
+    <system>
+        <tab id="siteation" sortOrder="999" translate="label">
+            <label>Siteation</label>
+        </tab>
+
+        <section id="general">
+            <group id="store_information" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Store Information</label>
+                <field id="extra_phone" translate="label" type="text" sortOrder="21" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Extra Store Phone Number</label>
+                    <validate>no-marginal-whitespace</validate>
+                </field>
+                <field id="whatsapp_number" translate="label" type="text" sortOrder="21" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>WhatsApp Phone Number</label>
+                    <validate>no-marginal-whitespace</validate>
+                </field>
+                <field id="coc_number" translate="label" type="text" sortOrder="62" showInDefault="1" showInWebsite="1"
+                    showInStore="1">
+                    <label>CoC Number</label>
+                </field>
+            </group>
+        </section>
+
+        <section id="siteation_storeinfo" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10"
+            translate="label">
+            <label>Store Info</label>
+            <tab>siteation</tab>
+            <resource>Magento_Backend::store</resource>
+
+            <group id="notices" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Notices</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                    showInStore="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="message" translate="label" type="text" sortOrder="20" showInDefault="1"
+                    showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Message</label>
+                </field>
+            </group>
+
+            <group id="opening_hours" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Opening Hours</label>
+                <field id="hours" translate="label" type="text" sortOrder="14" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Store Hours of Operation</label>
+                    <config_path>general/store_information/hours</config_path>
+                </field>
+                <field id="enabled" translate="label" type="select" sortOrder="20" showInDefault="1"
+                    showInWebsite="1"
+                    showInStore="1" canRestore="1">
+                    <label>Enabled Opening Hours of Operation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="daily_hours" translate="label" sortOrder="24" showInDefault="1" showInWebsite="1"
+                    showInStore="1" canRestore="1">
+                    <label>Opening Hours of Operation</label>
+                    <frontend_model>Siteation\StoreInfo\Block\Adminhtml\Form\Field\HourRanges</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>If Hours is blank the 'Store Hours of Operation' is used</comment>
+                </field>
+            </group>
+
+            <group id="socials" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Socials</label>
+                <field id="facebook_address" translate="label" type="text" sortOrder="110" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Facebook url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="twitter_handle" translate="label" type="text" sortOrder="120" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>X (Twitter) handle</label>
+                    <validate>no-whitespace</validate>
+                    <tooltip>Enter a valid Twitter handle without the url</tooltip>
+                </field>
+                <field id="instagram_handle" translate="label" type="text" sortOrder="130" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Instagram handle</label>
+                    <validate>no-whitespace</validate>
+                    <tooltip>Enter a valid Instagram handle without the url</tooltip>
+                </field>
+                <field id="linkedin_address" translate="label" type="text" sortOrder="140" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>LinkedIn url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="mastodon_address" translate="label" type="text" sortOrder="150" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Mastodon url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="pinterest_address" translate="label" type="text" sortOrder="160" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Pinterest url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="youtube_address" translate="label" type="text" sortOrder="200" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>YouTube url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="vimeo_address" translate="label" type="text" sortOrder="210" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Vimeo url</label>
+                    <validate>validate-url</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
