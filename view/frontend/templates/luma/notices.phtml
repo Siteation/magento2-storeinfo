@@ -20,7 +20,7 @@ $storeInfoNotice = $block->getData('viewModelStoreInfo');
 <?php if ($message = $storeInfoNotice->getNotices()): ?>
     <section class="message global note">
         <div class="container text-center">
-            <p><?= $escaper->escapeHtml($message); ?></p>
+            <p><?= $escaper->escapeHtml($message, ['a', 'strong', 'em', 'br']); ?></p>
         </div>
     </section>
 <?php endif; ?>
