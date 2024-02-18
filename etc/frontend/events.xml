@@ -5,8 +5,8 @@
 >
     <event name="hyva_config_generate_before">
         <observer
-            name="Siteation_StoreInfoExtra_Register_Hyva_Config"
-            instance="Siteation\StoreInfoExtra\Observer\RegisterModuleForHyvaConfig"
+            name="Siteation_StoreInfo_Register_Hyva_Config"
+            instance="Siteation\StoreInfo\Observer\RegisterModuleForHyvaConfig"
         />
     </event>
 </config>
