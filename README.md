@@ -5,10 +5,21 @@
 [![Hyvä Themes Supported](https://img.shields.io/badge/Hyva_Themes-Supported-3df0af.svg?longCache=true&style=for-the-badge)](https://hyva.io/)
 ![License](https://img.shields.io/github/license/Siteation/magento2-storeinfo?color=%23234&style=for-the-badge)
 
-This Magento 2 module adds the option to get the store information with ease.
+The Magento2 StoreInfo module streamlines the process of integrating essential store information into your Magento 2 website. Traditionally,
+this information would be added via CMS Static Blocks or hardcoded into templates.
 
-So you can get the store phone number from the Stores > Config.
-Instead using static block or hard code it in your template directly.
+However, the StoreInfo module offers a more efficient method by directly accessing and retrieving values from the store information.
+
+## Key Features:
+
+- Simplified store information integration
+- Extends default Magento 2 store information
+- Additional fields for enhanced storefront presentation:
+  - Extra Store phone number
+  - WhatsApp number
+  - Chamber of Commerce field
+
+With the StoreInfo module, developers can easily enhance their Magento 2 storefronts with comprehensive and customizable store information.
 
 ## Installation
 
@@ -25,65 +36,47 @@ bin/magento module:enable Siteation_StoreInfo
 
 ## How to use
 
-By default, this module does not load any content.
+The StoreInfo works out of the box by providing store information and store email addresses and displaying them in your storefront.
 
-This approach was chosen intentionally to ensure that it doesn't impose any specific styling or templating on your theme.
+| Admin        | Storefront   |
+| ------------ | ------------ |
+| ![preview-1] | ![preview-2] |
 
-Instead, we provide this module as a versatile toolkit that you can seamlessly integrate into your theme.
+[preview-1]: ./assets/storeinfo-admin.webp "Preview of the Magento2 admin store information"
+[preview-2]: ./assets/storeinfo.webp "Preview of the Magento2 store information displayed by the Siteation StoreInfo"
 
-To get started, you can refer to the sample configurations and usage examples provided below.
+Besides this the Siteation Storeinfo also adds even more usefull fields under `Stores > Configration > Siteation > StoreInfo`.
 
-This empowers you to tailor the module to your specific needs and maintain full control over the styling and templating to perfectly match your theme.
+### Socials
 
-> [!IMPORTANT]
-> We also offer a StoreInfo Extra module that add more fields,
-> for example social media links,
-> check it out here: [StoreInfo Extra](https://github.com/Siteation/magento2-storeinfo-extra)
+| Admin        | Storefront   |
+| ------------ | ------------ |
+| ![preview-3] | ![preview-4] |
 
-### Adding a address block
+[preview-3]: ./assets/socials-admin.webp "Preview of the Magento2 admin store information Siteation StoreInfo Socials"
+[preview-4]: ./assets/socials.webp "Preview of the Siteation StoreInfo Social icons"
 
-We have made an address block that uses the store information.
-And also comes with [schema tags](https://schema.org/) to enrich the Contact data.
+### Opening Hours
 
-To load the default store address block use 1 of the following xml samples
-in your template.
+| Admin        | Storefront   |
+| ------------ | ------------ |
+| ![preview-5] | ![preview-6] |
 
-<details open><summary>Hyva - XML Sample</summary>
+[preview-5]: ./assets/storehours-admin.webp "Preview of the Magento2 admin store information Siteation StoreInfo Opening Hours"
+[preview-6]: ./assets/storehours.webp "Preview of the Siteation StoreInfo Opening Hours"
 
-```xml
-<referenceBlock name="footer-content">
-    <block
-        name="footer.store.info"
-        as="footer-store-info"
-        template="Siteation_StoreInfo::hyva/store-address.phtml"
-    />
-</referenceBlock>
-```
+### Notices
 
-</details>
+| Admin        | Storefront   |
+| ------------ | ------------ |
+| ![preview-7] | ![preview-8] |
 
-<details><summary>Luma - XML Sample</summary>
+[preview-7]: ./assets/notices-admin.webp "Preview of the Magento2 admin store information Siteation StoreInfo Notices"
+[preview-8]: ./assets/notices.webp "Preview of the Siteation StoreInfo Notices"
 
-```xml
-<referenceContainer name="footer">
-    <block
-        name="footer.store.info"
-        as="footer-store-info"
-        template="Siteation_StoreInfo::luma/store-address.phtml"
-    >
-        <arguments>
-            <argument name="viewModelStoreInfo" 
-                xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
-        </arguments>
-    </block>
-</referenceContainer>
-```
+### Get StoreInfo in your own Template blocks.
 
-</details>
-
-### Get Store info in your own block.
-
-First get the viewModal in your template.
+First get the viewModal in your template, using the following sample;
 
 <details open><summary>Hyva - Sample Phtml file head</summary>
 
