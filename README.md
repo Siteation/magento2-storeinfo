@@ -36,7 +36,7 @@ bin/magento module:enable Siteation_StoreInfo
 
 ## How to use
 
-The StoreInfo works out of the box by providing store information and store email addresses and displaying them in your storefront.
+The StoreInfo works out of the box by providing store information and store email addresses and displaying them on your storefront.
 
 | Admin        | Storefront   |
 | ------------ | ------------ |
