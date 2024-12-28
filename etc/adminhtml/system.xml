@@ -75,32 +75,37 @@
             <group id="socials" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Socials</label>
-                <field id="facebook_address" translate="label" type="text" sortOrder="110" showInDefault="1"
+                <field id="linkedin_address" translate="label" type="text" sortOrder="110" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>LinkedIn url</label>
+                    <validate>validate-url</validate>
+                </field>
+                <field id="facebook_address" translate="label" type="text" sortOrder="120" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Facebook url</label>
                     <validate>validate-url</validate>
                 </field>
-                <field id="twitter_handle" translate="label" type="text" sortOrder="120" showInDefault="1"
-                    showInWebsite="1" showInStore="1">
-                    <label>X (Twitter) handle</label>
-                    <validate>no-whitespace</validate>
-                    <tooltip>Enter a valid Twitter handle without the url</tooltip>
-                </field>
-                <field id="instagram_handle" translate="label" type="text" sortOrder="130" showInDefault="1"
+                <field id="instagram_handle" translate="label" type="text" sortOrder="122" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Instagram handle</label>
                     <validate>no-whitespace</validate>
                     <tooltip>Enter a valid Instagram handle without the url</tooltip>
                 </field>
-                <field id="linkedin_address" translate="label" type="text" sortOrder="140" showInDefault="1"
+                <field id="bluesky_address" translate="label" type="text" sortOrder="130" showInDefault="1"
                     showInWebsite="1" showInStore="1">
-                    <label>LinkedIn url</label>
+                    <label>Bluesky url</label>
                     <validate>validate-url</validate>
                 </field>
-                <field id="mastodon_address" translate="label" type="text" sortOrder="150" showInDefault="1"
+                <field id="mastodon_address" translate="label" type="text" sortOrder="140" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Mastodon url</label>
                     <validate>validate-url</validate>
+                </field>
+                <field id="twitter_handle" translate="label" type="text" sortOrder="150" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>X (Twitter) handle</label>
+                    <validate>no-whitespace</validate>
+                    <tooltip>Enter a valid Twitter handle without the url</tooltip>
                 </field>
                 <field id="pinterest_address" translate="label" type="text" sortOrder="160" showInDefault="1"
                     showInWebsite="1" showInStore="1">

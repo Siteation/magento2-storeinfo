@@ -44,13 +44,11 @@ if ($socials->getInstagram()) {
     ]);
 }
 
-if ($socials->getTwitter()) {
+if ($socials->getBluesky()) {
     array_push($socialsList, [
-        'type' => 'twitter',
-        'link' => $socials->getTwitter()
-            ? 'https://twitter.com/' . $socials->getTwitter()
-            : '',
-        'title' => __('Visit %1 on Twitter for more', $socials->getTwitter())
+        'type' => 'bluesky',
+        'link' => $socials->getBluesky(),
+        'title' => __('Explore our %1 page', 'Bluesky')
     ]);
 }
 
@@ -59,6 +57,16 @@ if ($socials->getMastodon()) {
         'type' => 'mastodon',
         'link' => $socials->getMastodon(),
         'title' => __('Explore our %1 page', 'Mastodon')
+    ]);
+}
+
+if ($socials->getTwitter()) {
+    array_push($socialsList, [
+        'type' => 'twitter',
+        'link' => $socials->getTwitter()
+            ? 'https://twitter.com/' . $socials->getTwitter()
+            : '',
+        'title' => __('Visit %1 on Twitter for more', $socials->getTwitter())
     ]);
 }
 

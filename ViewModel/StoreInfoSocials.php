@@ -20,9 +20,19 @@ class StoreInfoSocials implements ArgumentInterface
         $this->moduleConfig = $moduleConfig;
     }
 
+    public function getLinkedIn(): string
+    {
+        return (string) $this->moduleConfig->getStoreInfoExtra('linkedin_address');
+    }
+
     public function getFacebook(): string
     {
         return (string) $this->moduleConfig->getStoreInfoExtra('facebook_address');
+    }
+
+    public function getInstagram(): string
+    {
+        return (string) $this->moduleConfig->getStoreInfoExtra('instagram_handle');
     }
 
     public function getTwitter(): string
@@ -30,14 +40,9 @@ class StoreInfoSocials implements ArgumentInterface
         return (string) $this->moduleConfig->getStoreInfoExtra('twitter_handle');
     }
 
-    public function getLinkedIn(): string
+    public function getBluesky(): string
     {
-        return (string) $this->moduleConfig->getStoreInfoExtra('linkedin_address');
-    }
-
-    public function getInstagram(): string
-    {
-        return (string) $this->moduleConfig->getStoreInfoExtra('instagram_handle');
+        return (string) $this->moduleConfig->getStoreInfoExtra('bluesky_address');
     }
 
     public function getMastodon(): string
