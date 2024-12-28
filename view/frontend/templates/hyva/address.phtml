@@ -63,11 +63,11 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
     </address>
     <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
         <?php if ($hours = $storeInfo->getHours()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($hours); ?></dd>
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getPhone()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
             <dd itemprop="telephone">
                 <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
@@ -82,7 +82,7 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getWhatsApp()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
             <dd>
                 <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
@@ -90,19 +90,19 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
             </dd>
         <?php endif; ?>
         <?php if ($email = $storeInfo->getEmail()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
             <dd itemprop="email">
-                <a href="mailto:<?= $escaper->escapeHtml($email); ?>">
+                <a href="mailto:<?= $escaper->escapeHtml($email); ?>" class="hyphens-auto">
                     <?= $escaper->escapeHtml($email); ?>
                 </a>
             </dd>
         <?php endif; ?>
         <?php if ($vat_number = $storeInfo->getVatNumber()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($vat_number); ?></dd>
         <?php endif; ?>
         <?php if ($coc_number = $storeInfo->getCocNumber()): ?>
-            <dt class="text-slate-500"><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
         <?php endif; ?>
     </dl>
