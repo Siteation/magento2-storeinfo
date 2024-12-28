@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hyvä Tailwind classes to be configurable trough xml arguments
 - Label spacing and color
 
+### Fixed
+- Missing landmark name in notices
+
 ## [3.0.0] - 2024-03-16
 
 [3.0.0]: https://github.com/Siteation/magento2-storeinfo/compare/2.1.0...3.0.0

@@ -20,7 +20,10 @@ $storeInfoNotice = $viewModels->require(StoreInfoNotice::class);
 ?>
 
 <?php if ($message = $storeInfoNotice->getNotices()): ?>
-    <section class="message global bg-slate-700 text-slate-50 shadow-none m-0 py-4 px-0 rounded-none font-strong text-sm sm:text-base">
+    <section
+        class="message global bg-slate-700 text-slate-50 shadow-none m-0 py-4 px-0 rounded-none font-strong text-sm sm:text-base"
+        aria-label="<?= $escaper->escapeHtmlAttr(__('Store Notice')) ?>"
+    >
         <div class="container text-center">
             <p><?= $escaper->escapeHtml($message, ['a', 'strong', 'em', 'br']); ?></p>
         </div>
