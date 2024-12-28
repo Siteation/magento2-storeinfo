@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.0.0...main
 
+### Changed
+- Hyvä Tailwind classes to be configurable trough xml arguments
+
 ## [3.0.0] - 2024-03-16
 
 [3.0.0]: https://github.com/Siteation/magento2-storeinfo/compare/2.1.0...3.0.0

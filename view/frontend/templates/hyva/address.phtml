@@ -19,10 +19,12 @@ use Siteation\StoreInfo\ViewModel\StoreInfo;
 $storeInfo = $viewModels->require(StoreInfo::class);
 
 $storeNameFallback = parse_url($block->getBaseUrl())['host'];
+
+$classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2 space-y-4';
 ?>
 
 <div
-    class="storeinfo pr-4 lg:w-1/4 md:w-1/2 space-y-4"
+    class="storeinfo <?= $escaper->escapeHtmlAttr($classList) ?>"
     itemscope
     itemtype="https://schema.org/Store"
 >
