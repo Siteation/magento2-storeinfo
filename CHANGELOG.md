@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Hyvä Tailwind classes to be configurable trough xml arguments
+- Label spacing and color
 
 ## [3.0.0] - 2024-03-16
 
