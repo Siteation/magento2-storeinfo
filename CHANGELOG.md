@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.0.0...main
 
+### Added
+- Option to socials for Bluesky
+
 ### Changed
 - Hyvä Tailwind classes to be configurable trough xml arguments
 - Label spacing and color
