@@ -44,6 +44,16 @@ if ($socials->getInstagram()) {
     ]);
 }
 
+if ($socials->getThreads()) {
+    array_push($socialsList, [
+        'type' => 'threads',
+        'link' => $socials->getThreads()
+            ? 'https://www.threads.net/' . $socials->getThreads()
+            : '',
+        'title' => __('Explore our %1 page', 'Threads')
+    ]);
+}
+
 if ($socials->getBluesky()) {
     array_push($socialsList, [
         'type' => 'bluesky',

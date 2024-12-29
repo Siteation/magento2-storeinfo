@@ -91,6 +91,12 @@
                     <validate>no-whitespace</validate>
                     <tooltip>Enter a valid Instagram handle without the url</tooltip>
                 </field>
+                <field id="threads_handle" translate="label" type="text" sortOrder="124" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Threads handle</label>
+                    <validate>no-whitespace</validate>
+                    <tooltip>Enter a valid Threads handle without the url</tooltip>
+                </field>
                 <field id="bluesky_address" translate="label" type="text" sortOrder="130" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Bluesky url</label>

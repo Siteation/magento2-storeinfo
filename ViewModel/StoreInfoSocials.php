@@ -35,6 +35,11 @@ class StoreInfoSocials implements ArgumentInterface
         return (string) $this->moduleConfig->getStoreInfoExtra('instagram_handle');
     }
 
+    public function getThreads(): string
+    {
+        return (string) $this->moduleConfig->getStoreInfoExtra('threads_handle');
+    }
+
     public function getTwitter(): string
     {
         return (string) $this->moduleConfig->getStoreInfoExtra('twitter_handle');

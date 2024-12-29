@@ -46,6 +46,16 @@ if ($socials->getInstagram()) {
     ]);
 }
 
+if ($socials->getThreads()) {
+    array_push($socialsList, [
+        'type' => 'threads',
+        'link' => $socials->getThreads()
+            ? 'https://www.threads.net/' . $socials->getThreads()
+            : '',
+        'title' => __('Explore our %1 page', 'Threads')
+    ]);
+}
+
 if ($socials->getBluesky()) {
     array_push($socialsList, [
         'type' => 'bluesky',
@@ -99,9 +109,11 @@ if ($socials->getVimeo()) {
 if (!count($socialsList)) {
     return '';
 }
+
+$classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2 space-y-4';
 ?>
 
-<div class="socials pr-4 lg:w-1/4 md:w-1/2">
+<div class="socials <?= $escaper->escapeHtmlAttr($classList) ?>">
     <h2 class="text-md leading-5 font-semibold tracking-wider uppercase">
         <?= $escaper->escapeHtml(__('Socials')); ?>
     </h2>
