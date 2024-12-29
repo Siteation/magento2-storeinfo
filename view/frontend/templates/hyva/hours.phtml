@@ -21,9 +21,11 @@ $storeInfoHours = $viewModels->require(StoreInfoHours::class);
 if (!$storeInfoHours->enabled()) {
     return '';
 }
+
+$classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2 space-y-4';
 ?>
 
-<div class="storehours pr-4 lg:w-1/4 md:w-1/2 space-y-4">
+<div class="storehours <?= $escaper->escapeHtmlAttr($classList) ?>">
     <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
         <?php foreach ($storeInfoHours->getOpeningHours() as $day): ?>
             <dt class="font-semibold"><?= $day['day']; ?></dt>
