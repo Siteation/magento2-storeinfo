@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.0.0...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.0...main
+
+## [3.1.0] - 2024-12-29
+
+[3.1.0]: https://github.com/Siteation/magento2-storeinfo/compare/3.0.0...3.1.0
 
 ### Added
 - Option to socials for Bluesky
+- Option to socials for Threads
 
 ### Changed
 - Hyvä Tailwind classes to be configurable trough xml arguments
