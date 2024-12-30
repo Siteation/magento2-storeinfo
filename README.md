@@ -101,28 +101,18 @@ $storeInfo = $viewModels->require(StoreInfo::class);
 <details><summary>Luma - Sample Phtml file head</summary>
 
 _For Luma templates,_
-_see the sample for the xml needed to load the viewModel._
-
-```xml
-<block name="your.blockname" template="Vendor_Module::path/to/your/file.phtml">
-    <arguments>
-        <argument name="viewModelStoreInfo" xsi:type="object">
-            Siteation\StoreInfo\ViewModel\StoreInfoNotice
-        </argument>
-    </arguments>
-</block>
-```
 
 ```php
 <?php declare(strict_types=1);
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfo;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
 
-/** @var Siteation\StoreInfo\ViewModel\StoreInfo $storeInfo */
+/** @var StoreInfo $storeInfo */
 $storeInfo = $block->getData('viewModelStoreInfo');
 ```
 
