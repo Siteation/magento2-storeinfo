@@ -76,7 +76,7 @@ Besides this the Siteation Storeinfo also adds even more usefull fields under `S
 
 ### Get StoreInfo in your own Template blocks.
 
-First get the viewModal in your template, using the following sample;
+First get the viewModel in your template, using the following sample;
 
 <details open><summary>Hyva - Sample Phtml file head</summary>
 
@@ -101,18 +101,18 @@ $storeInfo = $viewModels->require(StoreInfo::class);
 <details><summary>Luma - Sample Phtml file head</summary>
 
 _For Luma templates,_
-_see the previous sample for the xml needed to load the viewModal._
 
 ```php
 <?php declare(strict_types=1);
 
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfo;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
 
-/** @var Siteation\StoreInfo\ViewModel\StoreInfo $storeInfo */
+/** @var StoreInfo $storeInfo */
 $storeInfo = $block->getData('viewModelStoreInfo');
 ```
 
