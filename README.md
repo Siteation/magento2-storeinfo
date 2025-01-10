@@ -130,3 +130,11 @@ $storeInfo->getSalesEmail();
 $storeInfo->getStoreInfo('postcode'); // 'general/store_information/%s'
 $storeInfo->getStoreEmail('email', 'ident_sales'); // 'trans_email/%2$s/%1$s'
 ```
+
+## More StoreInfo Modules
+
+Interested in what this module does? We have a whole suite of modules that add even more features to your store, allowing you to manage specific aspects of your store using StoreInfo.
+- [StoreInfo USPS](https://github.com/Siteation/magento2-storeinfo-usps) – Display USPS details in the header, footer, and more.
+- [StoreInfo Menus](https://github.com/Siteation/magento2-storeinfo-menus) – Manage static menus, like footer menus, directly from the backend.
+- [StoreInfo Payments](https://github.com/Siteation/magento2-storeinfo-payments) – Show active payment methods on the frontend without manually adding them.
+
