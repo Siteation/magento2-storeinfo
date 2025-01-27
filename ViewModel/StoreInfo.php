@@ -132,6 +132,11 @@ class StoreInfo implements ArgumentInterface
         return (string) $this->moduleConfig->getStoreInfo('coc_number');
     }
 
+    public function getIbanNumber(): string
+    {
+        return (string) $this->moduleConfig->getStoreInfo('iban_number');
+    }
+
     // Email
     public function getEmail(): string
     {

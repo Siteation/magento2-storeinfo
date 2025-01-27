@@ -95,5 +95,9 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
             <dt><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
         <?php endif; ?>
+        <?php if ($iban_number = $storeInfo->getIbanNumber()): ?>
+            <dt><?= $escaper->escapeHtml(__('Iban-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($iban_number); ?></dd>
+        <?php endif; ?>
     </dl>
 </div>

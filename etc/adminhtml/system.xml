@@ -26,6 +26,10 @@
                     showInStore="1">
                     <label>CoC Number</label>
                 </field>
+                <field id="iban_number" translate="label" type="text" sortOrder="64" showInDefault="1" showInWebsite="1"
+                    showInStore="1">
+                    <label>IBAN/BANK Number</label>
+                </field>
             </group>
         </section>
 

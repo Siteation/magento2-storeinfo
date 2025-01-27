@@ -107,5 +107,9 @@ $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg
             <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
         <?php endif; ?>
+        <?php if ($iban_number = $storeInfo->getIbanNumber()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Iban-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($iban_number); ?></dd>
+        <?php endif; ?>
     </dl>
 </div>
