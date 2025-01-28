@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.0...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.1...main
+
+## [3.1.1] - 2025-01-28
+
+[3.1.1]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.0...3.1.1
+
+### Added
+- Added field for IBAN
 
 ## [3.1.0] - 2024-12-29
 
