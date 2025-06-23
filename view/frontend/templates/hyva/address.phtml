@@ -86,7 +86,7 @@ $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg
         <?php if ($phone = $storeInfo->getWhatsApp()): ?>
             <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
             <dd>
-                <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                <a href="https://wa.me/<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
                 </a>
             </dd>
