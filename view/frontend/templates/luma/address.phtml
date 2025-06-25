@@ -74,7 +74,7 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
         <?php if ($phone = $storeInfo->getWhatsApp()): ?>
             <dt><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
             <dd>
-                <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                <a href="https://wa.me/<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
                 </a>
             </dd>
