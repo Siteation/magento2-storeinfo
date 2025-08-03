@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.1...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.2...main
+
+## [3.1.2] - 2025-01-28
+
+[3.1.2]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.1...3.1.2
+
+### Changed
+- Whatsapp url
 
 ## [3.1.1] - 2025-01-28
 

@@ -1,6 +1,6 @@
 {
   "name": "siteation/magento2-storeinfo",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "license": "MIT",
   "type": "magento2-module",
   "description": "Get your store information with ease",
@@ -26,7 +26,9 @@
     "magento/module-store": ">=101.1"
   },
   "autoload": {
-    "files": ["registration.php"],
+    "files": [
+      "registration.php"
+    ],
     "psr-4": {
       "Siteation\\StoreInfo\\": ""
     }
