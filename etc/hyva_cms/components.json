@@ -1,0 +1,14 @@
+{
+  "storeinfo_address": {
+    "label": "Storeinfo Address",
+    "template": "Siteation_StoreInfo::hyva/address.phtml"
+  },
+  "storeinfo_hours": {
+    "label": "Storeinfo Hours",
+    "template": "Siteation_StoreInfo::hyva/hours.phtml"
+  },
+  "storeinfo_socials": {
+    "label": "Storeinfo Socials",
+    "template": "Siteation_StoreInfo::hyva/socials.phtml"
+  }
+}
