@@ -1,10 +1,8 @@
 & when (@media-common = true) {
-    .message.global {
-        &.note {
-            .lib-message(@_message-type: global-note);
-            margin-bottom: 0;
-            text-align: center;
-        }
+    .message.global.note {
+        .lib-message(@_message-type: global-note);
+        margin-bottom: 0;
+        text-align: center;
     }
 
     .footer-block {
@@ -13,40 +11,49 @@
         vertical-align: top;
     }
 
-    .socials {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
+    .storeinfo {
+        .title {
+            margin-block: 0 @indent__s;
+            font-size: @font-size__base;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
-        .action {
-            color: inherit;
-            text-decoration: none;
+        .socials {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: @indent__base;
+
+            a,
+            a:is(:hover, :focus) {
+                color: inherit;
+                text-decoration: none;
+            }
 
             svg {
                 transition: transform 0.2s linear;
             }
 
-            &:is(:hover, :focus) {
-                color: inherit;
-                text-decoration: none;
-
+            a:is(:hover, :focus) {
                 svg {
-                    transform: scale(.9);
+                    transform: scale(0.9);
                 }
             }
         }
-    }
 
-    .storeinfo {
         address {
-            margin-bottom: 1rem;
+            margin-bottom: @indent__s;
         }
-    }
 
-    .footer.content {
-        .socials {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+        dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: @indent__xs @indent__s;
+        }
+
+        dt,
+        dd {
+            margin-block: 0;
         }
     }
 }

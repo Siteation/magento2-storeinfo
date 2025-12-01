@@ -1,0 +1,47 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfoHours;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfoHours $storeInfoHours */
+$storeInfoHours = $block->getStoreInfoHours();
+
+$classes = $block->getCssClasses() ?: 'storeinfo';
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading();
+$headingClasses = $block->getHeadingCssClasses() ?? 'mb-4 text-md leading-5 font-semibold tracking-wider uppercase';
+
+$showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFullNameOfDay() : true;
+?>
+
+<?php if ($storeInfoHours && $storeInfoHours->enabled()): ?>
+    <div class="<?= $escaper->escapeHtmlAttr($classes) ?>">
+        <?php if($headingText): ?>
+            <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+                class="title <?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+            >
+                <?= $escaper->escapeHtml($headingText); ?>
+            </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
+        <?php endif; ?>
+        <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
+            <?php foreach ($storeInfoHours->getOpeningHours() as $day): ?>
+                <dt class="font-semibold"><?= $escaper->escapeHtmlAttr(
+                    $storeInfoHours->getFullNameOfDay($day['day'])
+                ); ?></dt>
+                <dd><?= $escaper->escapeHtmlAttr($day['hours']); ?></dd>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+<?php endif; ?>

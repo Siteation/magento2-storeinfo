@@ -15,34 +15,32 @@
     </referenceContainer>
 
     <referenceContainer name="after.body.start">
-        <block name="storeinfo.notices" template="Siteation_StoreInfo::luma/notices.phtml">
+        <block name="storeinfo.notice" template="Siteation_StoreInfo::html/notice.phtml">
             <arguments>
-                <argument name="viewModelStoreInfo"
-                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoNotice</argument>
+                <argument name="store_info_notice" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoNotice</argument>
             </arguments>
         </block>
     </referenceContainer>
 
     <referenceContainer name="footer">
-        <block name="storeinfo.address" template="Siteation_StoreInfo::luma/address.phtml">
+        <block name="storeinfo.address" template="Siteation_StoreInfo::html/address.phtml">
             <arguments>
-                <argument name="viewModelStoreInfo"
-                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
+                <argument name="store_info" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
+                <argument name="css_classes" xsi:type="string">footer-block storeinfo</argument>
             </arguments>
         </block>
-        <block
-            name="storeinfo.hours"
-            template="Siteation_StoreInfo::luma/hours.phtml"
-        >
+        <block name="storeinfo.hours" template="Siteation_StoreInfo::html/hours.phtml">
             <arguments>
-                <argument name="viewModelStoreInfo"
-                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoHours</argument>
+                <argument name="store_info_hours" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoHours</argument>
+                <argument name="heading" xsi:type="string" translate="true">Opening Hours</argument>
+                <argument name="css_classes" xsi:type="string">footer-block storeinfo</argument>
             </arguments>
         </block>
-        <block name="storeinfo.socials" template="Siteation_StoreInfo::luma/socials.phtml">
+        <block name="storeinfo.socials" template="Siteation_StoreInfo::html/socials.phtml">
             <arguments>
-                <argument name="viewModelStoreInfo"
-                    xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoSocials</argument>
+                <argument name="store_info_socials" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoSocials</argument>
+                <argument name="heading" xsi:type="string" translate="true">Follow us on</argument>
+                <argument name="css_classes" xsi:type="string">footer-block storeinfo</argument>
             </arguments>
         </block>
     </referenceContainer>

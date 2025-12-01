@@ -1,5 +1,5 @@
 module.exports = {
     purge: {
-        content: ["../templates/hyva/**/*.phtml"],
+        content: ["../templates/**/*.phtml", "../layout/**/*.xml"],
     },
 };
