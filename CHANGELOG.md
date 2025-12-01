@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added a Schema.org `Organization` template that uses data from StoreInfo.
+- Added Hyvä CMS support, allowing the templates to be used as components.
+
 - **Breaking Change:** The "Day" input for Store Notices has been converted from a text field to a dropdown menu
   to improve compatibility with Schema.org syntax.
   The existing "Day" value will need to be re-selected after updating.
