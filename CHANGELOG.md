@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.2...main
 
+- **Breaking Change:** The "Day" input for Store Notices has been converted from a text field to a dropdown menu
+  to improve compatibility with Schema.org syntax.
+  The existing "Day" value will need to be re-selected after updating.
 ## [3.1.2] - 2025-01-28
 
 [3.1.2]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.1...3.1.2

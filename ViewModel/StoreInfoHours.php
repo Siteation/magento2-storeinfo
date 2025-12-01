@@ -30,10 +30,28 @@ class StoreInfoHours implements ArgumentInterface
         return (string) $this->moduleConfig->getStoreInfo('hours');
     }
 
+    /**
+     * Returns raw list of opening hours as a array
+     */
     public function getDailyHours(): array
     {
         $dailyHours = $this->moduleConfig->getStoreInfoHours('daily_hours');
         return is_string($dailyHours) ? json_decode($dailyHours, true) : (array) $dailyHours;
+    }
+
+    public function getFullNameOfDay($dayCode): string
+    {
+        $days = [
+            'Mo' => __('Monday'),
+            'Tu' => __('Tuesday'),
+            'We' => __('Wednesday'),
+            'Th' => __('Thursday'),
+            'Fr' => __('Friday'),
+            'Sa' => __('Saturday'),
+            'Su' => __('Sunday'),
+        ];
+
+        return isset($days[$dayCode]) ? (string) $days[$dayCode] : '';
     }
 
     public function getOpeningHours(): array
