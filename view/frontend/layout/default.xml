@@ -3,6 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
+    <referenceContainer name="head.additional">
+        <block name="storeinfo.schema" template="Siteation_StoreInfo::head/schema.phtml">
+            <arguments>
+                <argument name="store_info" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfo</argument>
+                <argument name="store_info_hours" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoHours</argument>
+                <argument name="store_info_socials" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoSocials</argument>
+                <argument name="store_info_logo" xsi:type="object">Siteation\StoreInfo\ViewModel\StoreInfoLogo</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+
     <referenceContainer name="after.body.start">
         <block name="storeinfo.notices" template="Siteation_StoreInfo::luma/notices.phtml">
             <arguments>

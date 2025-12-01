@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.2...main
 
+### Added
+- Added a Schema.org `Organization` template that uses data from StoreInfo.
 - **Breaking Change:** The "Day" input for Store Notices has been converted from a text field to a dropdown menu
   to improve compatibility with Schema.org syntax.
   The existing "Day" value will need to be re-selected after updating.
