@@ -1,0 +1,113 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\CmsLiveviewEditor\Block\Element;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfo;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Element $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfo $storeInfo */
+$storeInfo = $viewModels->require(StoreInfo::class);
+
+$classes = $block->getClasses() ?: 'storeinfo';
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading() ?: $storeInfo->getStoreName() ?: '';
+$headingClasses = implode(' ', array_filter([
+    'mb-4',
+    $block->getHeadingClasses() === "default" ? 'text-base leading-5 font-semibold tracking-wider uppercase' : '',
+    $block->getHeadingClasses() === "large" ? 'text-2xl lg:text-4xl' : ''
+]));
+?>
+
+<div
+    <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
+    class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+    data-liveview-element="storeinfo-address"
+    <?= /** @noEscape */ $block->getEditorAttrs() ?>
+>
+    <?php if($headingText): ?>
+        <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+            class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+        >
+            <?= $escaper->escapeHtml($headingText); ?>
+        </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
+    <?php endif; ?>
+    <address class="not-italic mb-4">
+        <?php if ($address1 = $storeInfo->getStreetLine1()): ?>
+            <?= $escaper->escapeHtml($address1); ?>
+            <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
+                <?= $escaper->escapeHtml($address2); ?>
+            <?php endif; ?>
+            <br>
+        <?php endif; ?>
+        <?= $escaper->escapeHtml($storeInfo->getPostcode()); ?>
+        <?php if ($city = $storeInfo->getCity()): ?>
+            <?= $escaper->escapeHtml($city); ?><br>
+        <?php endif; ?>
+        <?php if ($country = $storeInfo->getCountry()): ?>
+            <?php if ($region = $storeInfo->getRegion()): ?>
+                <?= $escaper->escapeHtml($region); ?>,
+            <?php endif; ?>
+            <?= $escaper->escapeHtml($country); ?>
+        <?php endif; ?>
+    </address>
+    <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
+        <?php if ($hours = $storeInfo->getHours()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($hours); ?></dd>
+        <?php endif; ?>
+        <?php if ($phone = $storeInfo->getPhone()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
+            <dd>
+                <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                    <?= $escaper->escapeHtml($phone); ?>
+                </a>
+            </dd>
+            <?php if ($extraPhone = $storeInfo->getExtraPhone()): ?>
+                <dd class="col-start-2">
+                    <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($extraPhone)) ?>">
+                        <?= $escaper->escapeHtml($extraPhone); ?>
+                    </a>
+                </dd>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($phone = $storeInfo->getWhatsApp()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
+            <dd>
+                <a href="https://wa.me/<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
+                    <?= $escaper->escapeHtml($phone); ?>
+                </a>
+            </dd>
+        <?php endif; ?>
+        <?php if ($email = $storeInfo->getEmail()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
+            <dd>
+                <a href="mailto:<?= $escaper->escapeHtml($email); ?>" class="hyphens-auto">
+                    <?= $escaper->escapeHtml($email); ?>
+                </a>
+            </dd>
+        <?php endif; ?>
+        <?php if ($vat_number = $storeInfo->getVatNumber()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($vat_number); ?></dd>
+        <?php endif; ?>
+        <?php if ($coc_number = $storeInfo->getCocNumber()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
+        <?php endif; ?>
+        <?php if ($iban_number = $storeInfo->getIbanNumber()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Iban-Number')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($iban_number); ?></dd>
+        <?php endif; ?>
+    </dl>
+</div>

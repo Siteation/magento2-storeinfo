@@ -1,0 +1,74 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\CmsLiveviewEditor\Block\Element;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfoSocials;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Element $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfoSocials $socials */
+$socials = $viewModels->require(StoreInfoSocials::class);
+$socialsList = $socials->getList();
+
+$classes = $block->getClasses() ?: 'storeinfo';
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading();
+$headingClasses = implode(' ', array_filter([
+    'mb-4',
+    $block->getHeadingClasses() === "default" ? 'text-base leading-5 font-semibold tracking-wider uppercase' : '',
+    $block->getHeadingClasses() === "large" ? 'text-2xl lg:text-4xl' : ''
+]));
+
+$iconSize = $block->getIconSize() ?: 24;
+$iconColor = $block->getIconColor() ?: 'currentColor';
+?>
+
+<?php if ($socialsList): ?>
+    <div
+        <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
+        class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+        data-liveview-element="storeinfo-socials"
+        <?= /** @noEscape */ $block->getEditorAttrs() ?>
+    >
+        <?php if($headingText): ?>
+            <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+                class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+            >
+                <?= $escaper->escapeHtml($headingText); ?>
+            </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
+        <?php endif; ?>
+        <div class="inline-flex flex-wrap gap-4">
+            <?php foreach ($socialsList as $social): ?>
+                <a
+                    class="hover:scale-90 focus:scale-90 transition-transform"
+                    href="<?= $escaper->escapeHtml($social['link']); ?>"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="<?= $escaper->escapeHtml($social['title']); ?>"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="<?= $escaper->escapeHtmlAttr($iconSize) ?>"
+                        height="<?= $escaper->escapeHtmlAttr($iconSize) ?>"
+                        fill="<?= $escaper->escapeHtmlAttr($iconColor) ?>"
+                    >
+                        <use href="<?= $block->getViewFileUrl('Siteation_StoreInfo::images/socials.svg'); ?>#<?= $social['type']; ?>" />
+                    </svg>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php else: ?>
+    <?= /** @noEscape */ $block->renderEditorMessage(['preview_message' => __('No Store Socials Configured')]) ?>
+<?php endif; ?>
