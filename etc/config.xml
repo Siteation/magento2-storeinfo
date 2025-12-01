@@ -6,11 +6,11 @@
     <default>
         <siteation_storeinfo>
             <notices>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <message>Hello There, this your notices, sales, update e.t.c.</message>
             </notices>
             <opening_hours>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <daily_hours>
                     <item1>
                         <day>Mo</day>
