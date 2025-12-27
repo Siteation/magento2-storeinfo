@@ -23,7 +23,7 @@ class StoreInfoSocials implements ArgumentInterface
         'bluesky' => ['label' => 'Bluesky', 'url_prefix' => 'https://bsky.app/profile/'],
         'mastodon' => ['label' => 'Mastodon', 'url_prefix' => 'https://mastodon.social/'],
         'twitter' => ['label' => 'Twitter', 'url_prefix' => 'https://twitter.com/'],
-        'pinterest' => ['label' => 'Pinterest', 'url_prefix' => 'https://nl.pinterest.com/'],
+        'pinterest' => ['label' => 'Pinterest', 'url_prefix' => 'https://pinterest.com/'],
         'youtube' => ['label' => 'YouTube', 'url_prefix' => 'https://youtube.com/'],
         'vimeo' => ['label' => 'Vimeo', 'url_prefix' => 'https://vimeo.com/'],
     ];
