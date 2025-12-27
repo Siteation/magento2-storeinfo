@@ -18,14 +18,28 @@ use Siteation\StoreInfo\ViewModel\StoreInfo;
 /** @var StoreInfo $storeInfo */
 $storeInfo = $viewModels->require(StoreInfo::class);
 
-$classes = $block->getClasses() ?: 'storeinfo';
+$appearance = $block->getData('appearance');
+
+$bgColor = $block->getData('background_color');
+$fgColor = $block->getData('text_color');
+$styles = array_filter([
+    $bgColor ? "background-color: {$escaper->escapeHtml($bgColor)}" : '',
+    $fgColor ? "color: {$escaper->escapeHtml($fgColor)}" : ''
+]);
+$styleAttr = !empty($styles) ? ' style="' . implode('; ', $styles) . ';"' : '';
+
+$classes = implode(' ', array_filter([
+    $block->getClasses() ?: 'storeinfo',
+    $appearance === 'card' ? 'card' : '',
+    $appearance === 'card-elevated' ? 'card shadow-lg' : ''
+]));
 
 $headingTag = $block->getHeadingTag() ?? 'h2';
 $headingText = $block->getHeading() ?: $storeInfo->getStoreName() ?: '';
 $headingClasses = implode(' ', array_filter([
     'mb-4',
-    $block->getHeadingClasses() === "default" ? 'text-base leading-5 font-semibold tracking-wider uppercase' : '',
-    $block->getHeadingClasses() === "large" ? 'text-2xl lg:text-4xl' : ''
+    $block->getHeadingClasses() === "default" ? '!text-base !leading-5 !font-semibold tracking-wider uppercase' : '',
+    $block->getHeadingClasses() === "large" ? '!text-2xl !lg:text-4xl' : ''
 ]));
 ?>
 
@@ -33,6 +47,7 @@ $headingClasses = implode(' ', array_filter([
     <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
     class="<?= $escaper->escapeHtmlAttr($classes) ?>"
     data-liveview-element="storeinfo-address"
+    <?= /** @noEscape */ $styleAttr ?>
     <?= /** @noEscape */ $block->getEditorAttrs() ?>
 >
     <?php if($headingText): ?>

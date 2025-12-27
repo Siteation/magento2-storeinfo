@@ -8,7 +8,11 @@
       "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
     },
     "design": {
-      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ]
     },
     "advanced": {
       "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
@@ -23,7 +27,11 @@
       "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
     },
     "design": {
-      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ]
     },
     "advanced": {
       "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
@@ -38,7 +46,11 @@
       "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
     },
     "design": {
-      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json",
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ],
       "icon_size": {
         "label": "Icon Size",
         "type": "number",

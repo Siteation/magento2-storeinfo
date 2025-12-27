@@ -1,0 +1,21 @@
+{
+  "appearance": {
+    "type": "select",
+    "label": "Appearance",
+    "default_value": "default",
+    "options": [
+      {
+        "label": "Default",
+        "value": "default"
+      },
+      {
+        "label": "Card",
+        "value": "card"
+      },
+      {
+        "label": "Card Elevated",
+        "value": "card-elevated"
+      }
+    ]
+  }
+}
