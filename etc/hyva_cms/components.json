@@ -1,0 +1,69 @@
+{
+  "storeinfo_address": {
+    "label": "Address",
+    "category": "StoreInfo",
+    "icon": "Siteation_StoreInfo::images/components/map-pin-house.svg",
+    "template": "Siteation_StoreInfo::elements/address.phtml",
+    "content": {
+      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
+    },
+    "design": {
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ]
+    },
+    "advanced": {
+      "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
+    }
+  },
+  "storeinfo_hours": {
+    "label": "Hours",
+    "category": "StoreInfo",
+    "icon": "Siteation_StoreInfo::images/components/calendar-clock.svg",
+    "template": "Siteation_StoreInfo::elements/hours.phtml",
+    "content": {
+      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
+    },
+    "design": {
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ]
+    },
+    "advanced": {
+      "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
+    }
+  },
+  "storeinfo_socials": {
+    "label": "Socials",
+    "category": "StoreInfo",
+    "icon": "Siteation_StoreInfo::images/components/share.svg",
+    "template": "Siteation_StoreInfo::elements/socials.phtml",
+    "content": {
+      "includes": "Siteation_StoreInfo::etc/hyva_cms/default_heading.json"
+    },
+    "design": {
+      "includes": [
+        "Siteation_StoreInfo::etc/hyva_cms/styles.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfo::etc/hyva_cms/default_design_heading.json"
+      ],
+      "icon_size": {
+        "label": "Icon Size",
+        "type": "number",
+        "default_value": 32
+      },
+      "icon_color": {
+        "label": "Icon Color",
+        "type": "color",
+        "default_value": "var(--color-primary)"
+      }
+    },
+    "advanced": {
+      "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
+    }
+  }
+}

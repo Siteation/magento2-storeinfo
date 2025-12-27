@@ -10,61 +10,61 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
 use Siteation\StoreInfo\ViewModel\StoreInfo;
 
+/** @var ViewModelRegistry $viewModels */
 /** @var Template $block */
 /** @var Escaper $escaper */
 
 /** @var StoreInfo $storeInfo */
-$storeInfo = $block->getData('viewModelStoreInfo');
+$storeInfo = $block->getStoreInfo();
 
-$storeNameFallback = parse_url($block->getBaseUrl())['host'];
+$classes = $block->getCssClasses() ?: 'storeinfo';
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading() ?: $storeInfo->getStoreName() ?: '';
+$headingClasses = $block->getHeadingCssClasses() ?? 'mb-4 text-md leading-5 font-semibold tracking-wider uppercase';
 ?>
 
-<div
-    class="storeinfo footer-block"
-    itemscope
-    itemtype="https://schema.org/Store"
->
-    <div itemprop="name">
-        <strong><?= $escaper->escapeHtml($storeInfo->getStoreName() ?: $storeNameFallback); ?></strong>
-    </div>
-    <address
-        itemprop="address"
-        itemscope
-        itemtype="https://schema.org/PostalAddress"
-    >
+<div class="<?= $escaper->escapeHtmlAttr($classes) ?>">
+    <?php if($headingText): ?>
+        <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+            class="title <?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+        >
+            <?= $escaper->escapeHtml($headingText); ?>
+        </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
+    <?php endif; ?>
+    <address class="not-italic mb-4">
         <?php if ($address1 = $storeInfo->getStreetLine1()): ?>
-            <span itemprop="streetAddress">
-                <?= $escaper->escapeHtml($address1); ?>
-                <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
-                    <?= $escaper->escapeHtml($address2); ?>
-                <?php endif; ?>
-            </span>
+            <?= $escaper->escapeHtml($address1); ?>
+            <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
+                <?= $escaper->escapeHtml($address2); ?>
+            <?php endif; ?>
             <br>
         <?php endif; ?>
-        <?php if ($postcode = $storeInfo->getPostcode()): ?>
-            <span itemprop="postalCode"><?= $escaper->escapeHtml($postcode); ?></span>
-        <?php endif; ?>
+        <?= $escaper->escapeHtml($storeInfo->getPostcode()); ?>
         <?php if ($city = $storeInfo->getCity()): ?>
-            <span itemprop="addressLocality"><?= $escaper->escapeHtml($city); ?></span>
-            <br>
+            <?= $escaper->escapeHtml($city); ?><br>
         <?php endif; ?>
         <?php if ($country = $storeInfo->getCountry()): ?>
             <?php if ($region = $storeInfo->getRegion()): ?>
-                <span itemprop="addressRegion"><?= $escaper->escapeHtml($region); ?>,</span>
+                <?= $escaper->escapeHtml($region); ?>,
             <?php endif; ?>
-            <span itemprop="addressCountry"><?= $escaper->escapeHtml($country); ?></span>
+            <?= $escaper->escapeHtml($country); ?>
         <?php endif; ?>
     </address>
-    <dl>
+    <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
+        <?php if ($hours = $storeInfo->getHours()): ?>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
+            <dd><?= $escaper->escapeHtml($hours); ?></dd>
+        <?php endif; ?>
         <?php if ($phone = $storeInfo->getPhone()): ?>
-            <dt><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
-            <dd itemprop="telephone">
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
+            <dd>
                 <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
                 </a>
             </dd>
             <?php if ($extraPhone = $storeInfo->getExtraPhone()): ?>
-                <dd>
+                <dd class="col-start-2">
                     <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($extraPhone)) ?>">
                         <?= $escaper->escapeHtml($extraPhone); ?>
                     </a>
@@ -72,7 +72,7 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getWhatsApp()): ?>
-            <dt><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
             <dd>
                 <a href="https://wa.me/<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
@@ -80,23 +80,23 @@ $storeNameFallback = parse_url($block->getBaseUrl())['host'];
             </dd>
         <?php endif; ?>
         <?php if ($email = $storeInfo->getEmail()): ?>
-            <dt><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
-            <dd itemprop="email">
-                <a href="mailto:<?= $escaper->escapeHtml($email); ?>">
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
+            <dd>
+                <a href="mailto:<?= $escaper->escapeHtml($email); ?>" class="hyphens-auto">
                     <?= $escaper->escapeHtml($email); ?>
                 </a>
             </dd>
         <?php endif; ?>
         <?php if ($vat_number = $storeInfo->getVatNumber()): ?>
-            <dt><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('VAT-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($vat_number); ?></dd>
         <?php endif; ?>
         <?php if ($coc_number = $storeInfo->getCocNumber()): ?>
-            <dt><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('CoC-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($coc_number); ?></dd>
         <?php endif; ?>
         <?php if ($iban_number = $storeInfo->getIbanNumber()): ?>
-            <dt><?= $escaper->escapeHtml(__('Iban-Number')) ?>:</dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Iban-Number')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($iban_number); ?></dd>
         <?php endif; ?>
     </dl>

@@ -5,31 +5,34 @@
 >
     <default>
         <siteation_storeinfo>
+            <schema_data>
+                <enabled>1</enabled>
+            </schema_data>
             <notices>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <message>Hello There, this your notices, sales, update e.t.c.</message>
             </notices>
             <opening_hours>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <daily_hours>
                     <item1>
-                        <day>Monday</day>
-                        <hours>08:00 - 17:00</hours>
+                        <day>Mo</day>
+                        <hours>10:00 - 17:00</hours>
                     </item1>
                     <item2>
-                        <day>Thuesday</day>
+                        <day>Th</day>
                         <hours>08:00 - 17:00</hours>
                     </item2>
                     <item3>
-                        <day>Wensday</day>
+                        <day>We</day>
                         <hours>08:00 - 17:00</hours>
                     </item3>
                     <item4>
-                        <day>Thursday</day>
+                        <day>Th</day>
                         <hours>08:00 - 19:00</hours>
                     </item4>
                     <item5>
-                        <day>Friday</day>
+                        <day>Fr</day>
                         <hours>08:00 - 17:00</hours>
                     </item5>
                 </daily_hours>

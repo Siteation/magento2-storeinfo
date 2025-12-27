@@ -7,60 +7,73 @@
  */
 
 use Hyva\Theme\Model\ViewModelRegistry;
-use Magento\Framework\View\Element\Template;
+use Hyva\CmsLiveviewEditor\Block\Element;
 use Magento\Framework\Escaper;
 use Siteation\StoreInfo\ViewModel\StoreInfo;
 
 /** @var ViewModelRegistry $viewModels */
-/** @var Template $block */
+/** @var Element $block */
 /** @var Escaper $escaper */
 
 /** @var StoreInfo $storeInfo */
 $storeInfo = $viewModels->require(StoreInfo::class);
 
-$storeNameFallback = parse_url($block->getBaseUrl())['host'];
+$appearance = $block->getData('appearance');
 
-$classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2 space-y-4';
+$bgColor = $block->getData('background_color');
+$fgColor = $block->getData('text_color');
+$styles = array_filter([
+    $bgColor ? "background-color: {$escaper->escapeHtml($bgColor)}" : '',
+    $fgColor ? "color: {$escaper->escapeHtml($fgColor)}" : ''
+]);
+$styleAttr = !empty($styles) ? ' style="' . implode('; ', $styles) . ';"' : '';
+
+$classes = implode(' ', array_filter([
+    $block->getClasses() ?: 'storeinfo',
+    $appearance === 'card' ? 'card' : '',
+    $appearance === 'card-elevated' ? 'card shadow-lg' : ''
+]));
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading() ?: $storeInfo->getStoreName() ?: '';
+$headingClasses = implode(' ', array_filter([
+    'mb-4',
+    $block->getHeadingClasses() === "default" ? '!text-base !leading-5 !font-semibold tracking-wider uppercase' : '',
+    $block->getHeadingClasses() === "large" ? '!text-2xl !lg:text-4xl' : ''
+]));
 ?>
 
 <div
-    class="storeinfo <?= $escaper->escapeHtmlAttr($classList) ?>"
-    itemscope
-    itemtype="https://schema.org/Store"
+    <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
+    class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+    data-liveview-element="storeinfo-address"
+    <?= /** @noEscape */ $styleAttr ?>
+    <?= /** @noEscape */ $block->getEditorAttrs() ?>
 >
-    <div
-        class="mb-4 text-md leading-5 tracking-wider uppercase"
-        itemprop="name"
-    >
-        <strong class="font-semibold"><?= $escaper->escapeHtml($storeInfo->getStoreName() ?: $storeNameFallback); ?></strong>
-    </div>
-    <address
-        class="not-italic"
-        itemprop="address"
-        itemscope
-        itemtype="https://schema.org/PostalAddress"
-    >
+    <?php if($headingText): ?>
+        <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+            class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+        >
+            <?= $escaper->escapeHtml($headingText); ?>
+        </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
+    <?php endif; ?>
+    <address class="not-italic mb-4">
         <?php if ($address1 = $storeInfo->getStreetLine1()): ?>
-            <span itemprop="streetAddress">
-                <?= $escaper->escapeHtml($address1); ?>
-                <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
-                    <?= $escaper->escapeHtml($address2); ?>
-                <?php endif; ?>
-            </span>
+            <?= $escaper->escapeHtml($address1); ?>
+            <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
+                <?= $escaper->escapeHtml($address2); ?>
+            <?php endif; ?>
             <br>
         <?php endif; ?>
-        <?php if ($postcode = $storeInfo->getPostcode()): ?>
-            <span itemprop="postalCode"><?= $escaper->escapeHtml($postcode); ?></span>
-        <?php endif; ?>
+        <?= $escaper->escapeHtml($storeInfo->getPostcode()); ?>
         <?php if ($city = $storeInfo->getCity()): ?>
-            <span itemprop="addressLocality"><?= $escaper->escapeHtml($city); ?></span>
-            <br>
+            <?= $escaper->escapeHtml($city); ?><br>
         <?php endif; ?>
         <?php if ($country = $storeInfo->getCountry()): ?>
             <?php if ($region = $storeInfo->getRegion()): ?>
-                <span itemprop="addressRegion"><?= $escaper->escapeHtml($region); ?>,</span>
+                <?= $escaper->escapeHtml($region); ?>,
             <?php endif; ?>
-            <span itemprop="addressCountry"><?= $escaper->escapeHtml($country); ?></span>
+            <?= $escaper->escapeHtml($country); ?>
         <?php endif; ?>
     </address>
     <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
@@ -70,7 +83,7 @@ $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getPhone()): ?>
             <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
-            <dd itemprop="telephone">
+            <dd>
                 <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
                 </a>
@@ -93,7 +106,7 @@ $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg
         <?php endif; ?>
         <?php if ($email = $storeInfo->getEmail()): ?>
             <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
-            <dd itemprop="email">
+            <dd>
                 <a href="mailto:<?= $escaper->escapeHtml($email); ?>" class="hyphens-auto">
                     <?= $escaper->escapeHtml($email); ?>
                 </a>

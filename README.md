@@ -3,6 +3,7 @@
 [![Packagist Version](https://img.shields.io/packagist/v/siteation/magento2-storeinfo?style=for-the-badge)](https://packagist.org/packages/siteation/magento2-storeinfo)
 ![Supported Magento Versions](https://img.shields.io/badge/magento-%202.4-brightgreen.svg?logo=magento&longCache=true&style=for-the-badge)
 [![Hyvä Themes Supported](https://img.shields.io/badge/Hyva_Themes-Supported-3df0af.svg?longCache=true&style=for-the-badge)](https://hyva.io/)
+[![Hyvä CMS Supported](https://img.shields.io/badge/Hyva_CMS-Supported-0a144b.svg?longCache=true&style=for-the-badge)](https://hyva.io/)
 ![License](https://img.shields.io/github/license/Siteation/magento2-storeinfo?color=%23234&style=for-the-badge)
 
 The Magento2 StoreInfo module streamlines the process of integrating essential store information into your Magento 2 website. Traditionally,
@@ -29,10 +30,6 @@ Install the package via;
 composer require siteation/magento2-storeinfo
 bin/magento module:enable Siteation_StoreInfo
 ```
-
-> [!NOTE]
-> This Module requires Magento 2.4 or higher!
-> For more requirements see the `composer.json`.
 
 ## How to use
 
@@ -74,7 +71,16 @@ Besides this the Siteation Storeinfo also adds even more usefull fields under `S
 [preview-7]: ./assets/notices-admin.webp "Preview of the Magento2 admin store information Siteation StoreInfo Notices"
 [preview-8]: ./assets/notices.webp "Preview of the Siteation StoreInfo Notices"
 
-### Get StoreInfo in your own Template blocks.
+### Hyva CMS
+
+| CMS          | Picker        |
+| ------------ | ------------- |
+| ![preview-9] | ![preview-10] |
+
+[preview-9]: ./assets/cms.webp "Preview of Hyva CMS with Siteation StoreInfo Components"
+[preview-10]: ./assets/cms-picker.webp "Preview of Hyva CMS Picker with Siteation StoreInfo Components"
+
+## Get StoreInfo in your own Template blocks.
 
 First get the viewModel in your template, using the following sample;
 
@@ -133,7 +139,11 @@ $storeInfo->getStoreEmail('email', 'ident_sales'); // 'trans_email/%2$s/%1$s'
 
 ## More StoreInfo Modules
 
-Interested in what this module does? We have a whole suite of modules that add even more features to your store, allowing you to manage specific aspects of your store using StoreInfo.
+Interested in what this module does?
+
+We have a whole suite of modules that add even more features to your store,
+allowing you to manage specific aspects of your store using StoreInfo.
+
 - [StoreInfo USPS](https://github.com/Siteation/magento2-storeinfo-usps) – Display USPS details in the header, footer, and more.
 - [StoreInfo Menus](https://github.com/Siteation/magento2-storeinfo-menus) – Manage static menus, like footer menus, directly from the backend.
 - [StoreInfo Payments](https://github.com/Siteation/magento2-storeinfo-payments) – Show active payment methods on the frontend without manually adding them.

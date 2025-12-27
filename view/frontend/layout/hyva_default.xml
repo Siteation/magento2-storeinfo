@@ -3,22 +3,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
-    <referenceContainer name="after.body.start">
-        <block name="storeinfo.notices" template="Siteation_StoreInfo::hyva/notices.phtml"/>
-    </referenceContainer>
+    <move element="storeinfo.address" destination="footer-content"/>
+    <move element="storeinfo.hours" destination="footer-content"/>
+    <move element="storeinfo.socials" destination="footer-content"/>
 
-    <referenceBlock name="footer-content">
-        <block
-            name="storeinfo.address"
-            template="Siteation_StoreInfo::hyva/address.phtml"
-        />
-        <block
-            name="storeinfo.hours"
-            template="Siteation_StoreInfo::hyva/hours.phtml"
-        />
-        <block
-            name="storeinfo.socials"
-            template="Siteation_StoreInfo::hyva/socials.phtml"
-        />
+    <referenceBlock name="storeinfo.notice">
+        <arguments>
+            <argument name="css_classes" xsi:type="string">bg-slate-700 text-slate-50 shadow-none m-0 py-4 px-0 rounded-none font-strong text-sm sm:text-base text-center</argument>
+        </arguments>
+    </referenceBlock>
+
+    <referenceBlock name="storeinfo.address">
+        <arguments>
+            <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+        </arguments>
+    </referenceBlock>
+
+    <referenceBlock name="storeinfo.hours">
+        <arguments>
+            <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+        </arguments>
+    </referenceBlock>
+
+    <referenceBlock name="storeinfo.socials">
+        <arguments>
+            <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+        </arguments>
     </referenceBlock>
 </page>

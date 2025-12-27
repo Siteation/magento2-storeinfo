@@ -1,0 +1,68 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfo\ViewModel\StoreInfo;
+use Siteation\StoreInfo\ViewModel\StoreInfoHours;
+use Siteation\StoreInfo\ViewModel\StoreInfoSocials;
+use Siteation\StoreInfo\ViewModel\StoreInfoLogo;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfo $storeInfo */
+$storeInfo = $block->getStoreInfo();
+
+/** @var storeInfoHours $storeInfoHours */
+$storeInfoHours = $block->getStoreInfoHours();
+
+/** @var StoreInfoSocials $storeInfoSocials */
+$storeInfoSocials = $block->getStoreInfoSocials();
+
+/** @var StoreInfoLogo $storeInfoLogo */
+$storeInfoLogo = $block->getStoreInfoLogo();
+
+$street = $storeInfo->getStreetLine1() ?: '';
+if ($streetAddon = $storeInfo->getStreetLine2()) {
+    $street .= ' ' . $streetAddon;
+}
+
+$address = array_filter([
+    '@type' => 'PostalAddress',
+    'streetAddress' => $street,
+    'addressLocality' => $storeInfo->getCity(),
+    'addressRegion' => $storeInfo->getRegion(),
+    'postalCode' => $storeInfo->getPostcode(),
+    'addressCountry' => $storeInfo->getCountryId()
+]);
+
+$openingHoursSchema = $storeInfoHours->enabled() ? [] : $storeInfoHours->getHours();
+if ($storeInfoHours->enabled()) {
+    foreach ($storeInfoHours->getOpeningHours() as $entry) {
+        $openingHoursSchema[] = sprintf('%s %s', $entry['day'], $entry['hours']);
+    }
+}
+
+$schema = array_filter([
+    '@context' => 'https://schema.org',
+    '@type' => 'Store',
+    'name' => $storeInfo->getStoreName() ?: parse_url($block->getBaseUrl())['host'],
+    'url' => $block->getBaseUrl(),
+    'logo' => $storeInfoLogo->getPath(),
+    'telephone' => $storeInfo->getPhone(),
+    'email' => $storeInfo->getEmail(),
+    'address' => $address,
+    'openingHours' => $openingHoursSchema,
+    'sameAs' => array_column($storeInfoSocials->getList(), 'link')
+]);
+?>
+
+<script type="application/ld+json">
+<?= /* @noEscape */ json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) ?>
+</script>

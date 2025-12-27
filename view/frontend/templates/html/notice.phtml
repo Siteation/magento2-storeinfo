@@ -6,7 +6,6 @@
  * @license MIT
  */
 
-use Hyva\Theme\Model\ViewModelRegistry;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
 use Siteation\StoreInfo\ViewModel\StoreInfoNotice;
@@ -14,17 +13,22 @@ use Siteation\StoreInfo\ViewModel\StoreInfoNotice;
 /** @var ViewModelRegistry $viewModels */
 /** @var Template $block */
 /** @var Escaper $escaper */
-/** @var StoreInfoNotice $storeInfoNotice */
 
-$storeInfoNotice = $viewModels->require(StoreInfoNotice::class);
+/** @var StoreInfoNotice $storeInfoNotice */
+$storeInfoNotice = $block->getStoreInfoNotice();
+
+$classes = implode(' ', array_filter([
+    'message global note',
+    $block->getCssClasses()
+]));
 ?>
 
 <?php if ($message = $storeInfoNotice->getNotices()): ?>
     <section
-        class="message global bg-slate-700 text-slate-50 shadow-none m-0 py-4 px-0 rounded-none font-strong text-sm sm:text-base"
+        class="<?= $escaper->escapeHtmlAttr($classes) ?>"
         aria-label="<?= $escaper->escapeHtmlAttr(__('Store Notice')) ?>"
     >
-        <div class="container text-center">
+        <div class="container">
             <p><?= $escaper->escapeHtml($message, ['a', 'strong', 'em', 'br']); ?></p>
         </div>
     </section>

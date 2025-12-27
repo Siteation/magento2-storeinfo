@@ -8,7 +8,9 @@
             <module name="Magento_Backend"/>
             <module name="Magento_Directory"/>
             <module name="Magento_Store"/>
+            <module name="Magento_Theme"/>
             <module name="Hyva_Theme"/>
+            <module name="Hyva_CmsBase"/>
         </sequence>
     </module>
 </config>
