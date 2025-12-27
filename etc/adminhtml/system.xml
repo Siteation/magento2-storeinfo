@@ -91,10 +91,11 @@
                 showInStore="1">
                 <label>Socials</label>
                 <comment>Each option can be a full url or just the username</comment>
-                <field id="linkedin" translate="label" type="text" sortOrder="110" showInDefault="1"
+                <field id="linkedin" translate="label,comment" type="text" sortOrder="110" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>LinkedIn</label>
                     <validate>no-whitespace</validate>
+                    <comment>When using the username the default url uses the a company url</comment>
                 </field>
                 <field id="facebook" translate="label" type="text" sortOrder="120" showInDefault="1"
                     showInWebsite="1" showInStore="1">
@@ -111,15 +112,17 @@
                     <label>Threads</label>
                     <validate>no-whitespace</validate>
                 </field>
-                <field id="bluesky" translate="label" type="text" sortOrder="130" showInDefault="1"
+                <field id="bluesky" translate="label,tooltip" type="text" sortOrder="130" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Bluesky</label>
                     <validate>no-whitespace</validate>
+                    <tooltip>The default server is bsky.social, when only using a username</tooltip>
                 </field>
-                <field id="mastodon" translate="label" type="text" sortOrder="140" showInDefault="1"
+                <field id="mastodon" translate="label,tooltip" type="text" sortOrder="140" showInDefault="1"
                     showInWebsite="1" showInStore="1">
                     <label>Mastodon</label>
                     <validate>no-whitespace</validate>
+                    <tooltip>The default server is mastodon.social, when only using a username</tooltip>
                 </field>
                 <field id="twitter" translate="label" type="text" sortOrder="150" showInDefault="1"
                     showInWebsite="1" showInStore="1">
