@@ -7,13 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.2...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.0...main
+
+## [4.0.0] - 2025-12-27
 
 ### Added
+
 - Added a Schema.org `Organization` template that uses data from StoreInfo.
 - Added Hyvä CMS support, allowing the templates to be used as components.
 
 ### Changed
+
 - **Breaking Change:** The "Day" input for Store Notices has been converted from a text field to a dropdown menu
   to improve compatibility with Schema.org syntax.
   The existing "Day" value will need to be re-selected after updating.
@@ -42,14 +46,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [3.1.0]: https://github.com/Siteation/magento2-storeinfo/compare/3.0.0...3.1.0
 
 ### Added
+
 - Option to socials for Bluesky
 - Option to socials for Threads
 
 ### Changed
+
 - Hyvä Tailwind classes to be configurable trough xml arguments
 - Label spacing and color
 
 ### Fixed
+
 - Missing landmark name in notices
 
 ## [3.0.0] - 2024-03-16
