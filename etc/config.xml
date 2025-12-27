@@ -5,6 +5,9 @@
 >
     <default>
         <siteation_storeinfo>
+            <schema_data>
+                <enabled>1</enabled>
+            </schema_data>
             <notices>
                 <enabled>1</enabled>
                 <message>Hello There, this your notices, sales, update e.t.c.</message>

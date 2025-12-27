@@ -39,6 +39,17 @@
             <tab>siteation</tab>
             <resource>Magento_Backend::store</resource>
 
+            <group id="schema_data" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1">
+                <label>Schema Data</label>
+                <field id="enabled" translate="label,comment" type="select" sortOrder="10" showInDefault="1"
+                    showInWebsite="1"
+                    showInStore="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use the Store Info data for the Store Schema Data</comment>
+                </field>
+            </group>
+
             <group id="notices" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Notices</label>
