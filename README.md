@@ -71,7 +71,16 @@ Besides this the Siteation Storeinfo also adds even more usefull fields under `S
 [preview-7]: ./assets/notices-admin.webp "Preview of the Magento2 admin store information Siteation StoreInfo Notices"
 [preview-8]: ./assets/notices.webp "Preview of the Siteation StoreInfo Notices"
 
-### Get StoreInfo in your own Template blocks.
+### Hyva CMS
+
+| CMS          | Picker        |
+| ------------ | ------------- |
+| ![preview-9] | ![preview-10] |
+
+[preview-9]: ./assets/cms.webp "Preview of Hyva CMS with Siteation StoreInfo Components"
+[preview-10]: ./assets/cms-picker.webp "Preview of Hyva CMS Picker with Siteation StoreInfo Components"
+
+## Get StoreInfo in your own Template blocks.
 
 First get the viewModel in your template, using the following sample;
 
