@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Missing support for Hyvä Contract Page.
 
+### Fixed
+
+- Removed invalid `ViewModelRegistry` PHP var comments for Luma.
+
 ## [4.0.0] - 2025-12-27
 
 [4.0.0]: https://github.com/Siteation/magento2-storeinfo/compare/3.1.2...4.0.0
