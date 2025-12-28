@@ -7,7 +7,6 @@
  */
 
 use Hyva\Theme\Model\ViewModelRegistry;
-use Hyva\Theme\ViewModel\LucideIcons;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
 use Siteation\StoreInfo\ViewModel\StoreInfo;
@@ -16,9 +15,6 @@ use Siteation\StoreInfo\ViewModel\StoreInfoHours;
 /** @var ViewModelRegistry $viewModels */
 /** @var Template $block */
 /** @var Escaper $escaper */
-
-/** @var LucideIcons $lucideIcons */
-$lucideIcons = $viewModels->require(LucideIcons::class);
 
 /** @var StoreInfo $storeInfo */
 $storeInfo = $viewModels->require(StoreInfo::class);
@@ -40,7 +36,7 @@ $showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFu
         </h2>
         <p><strong><?= $escaper->escapeHtml($storeInfo->getStoreName()); ?></strong></p>
     </hgroup>
-    <address class="not-italic mb-4">
+    <address class="not-italic mt-2 mb-4">
         <?php if ($address1 = $storeInfo->getStreetLine1()): ?>
             <?= $escaper->escapeHtml($address1); ?>
             <?php if ($address2 = $storeInfo->getStreetLine2()): ?>
@@ -61,15 +57,11 @@ $showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFu
     </address>
     <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
         <?php if (!$useStoreHours && $hours = $storeInfo->getHours()): ?>
-            <dt class="text-slate-600 text-sm">
-                <?= $lucideIcons->storeHtml('', 20, 20, ['aria-label' => __('POpening Hoursone')]); ?>
-            </dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($hours); ?></dd>
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getPhone()): ?>
-            <dt class="text-slate-600 text-sm">
-                <?= $lucideIcons->phoneHtml('', 20, 20, ['aria-label' => __('Phone')]); ?>
-            </dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Phone')) ?>:</dt>
             <dd>
                 <a href="tel:<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
@@ -84,9 +76,7 @@ $showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFu
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($phone = $storeInfo->getWhatsApp()): ?>
-            <dt class="text-slate-600 text-sm">
-                <?= $lucideIcons->messageCircleHtml('', 20, 20, ['aria-label' => __('Whatsapp')]); ?>
-            </dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Whatsapp')) ?>:</dt>
             <dd>
                 <a href="https://wa.me/<?= $escaper->escapeHtmlAttr($storeInfo->formatPhoneNumber($phone)) ?>">
                     <?= $escaper->escapeHtml($phone); ?>
@@ -94,9 +84,7 @@ $showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFu
             </dd>
         <?php endif; ?>
         <?php if ($email = $storeInfo->getEmail()): ?>
-            <dt class="text-slate-600 text-sm">
-                <?= $lucideIcons->mailHtml('', 20, 20, ['aria-label' => __('Email')]); ?>
-            </dt>
+            <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Email')) ?>:</dt>
             <dd>
                 <a href="mailto:<?= $escaper->escapeHtml($email); ?>" class="hyphens-auto">
                     <?= $escaper->escapeHtml($email); ?>
@@ -120,9 +108,10 @@ $showFullNameOfDay = $block->getShowFullNameOfDay() !== null ? $block->getShowFu
 
 <?php if ($useStoreHours): ?>
     <div class="mt-4">
-        <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
+        <p><strong><?= $escaper->escapeHtml(__('Opening Hours')) ?></strong></p>
+        <dl class="mt-2 grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
             <?php foreach ($storeInfoHours->getOpeningHours() as $day): ?>
-                <dt class="font-semibold"><?= $escaper->escapeHtmlAttr(
+                <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtmlAttr(
                     $storeInfoHours->getFullNameOfDay($day['day'])
                 ); ?></dt>
                 <dd><?= $escaper->escapeHtmlAttr($day['hours']); ?></dd>
