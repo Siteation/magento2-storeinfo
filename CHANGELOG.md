@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Missing support for Hyvä Contract Page.
+- Missing support for Hyvä Contact Page.
 
 ### Fixed
 
