@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.0...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.1...main
+
+## [4.0.1] - 2025-12-28
+
+[4.0.1]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.0...4.0.1
+
 ### Added
 
 - Missing support for Hyvä Contract Page.
