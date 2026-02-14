@@ -13,11 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Taoilwind 4 support for Hyvä.
+- Tailwind 4 support for Hyvä.
 
 ### Fixed
 
-- Small alingment in address grid.
+- Small alignment in address grid.
 
 ## [4.0.1] - 2025-12-28
 
