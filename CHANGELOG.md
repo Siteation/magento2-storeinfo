@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.1...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.2...main
+
+## [4.0.2] - 2026-02-14
+
+### Added
+
+- Taoilwind 4 support for Hyvä.
+
+### Fixed
+
+- Small alingment in address grid.
 
 ## [4.0.1] - 2025-12-28
 
