@@ -50,7 +50,7 @@ $headingClasses = $block->getHeadingCssClasses() ?? 'mb-4 text-md leading-5 font
             <?= $escaper->escapeHtml($country); ?>
         <?php endif; ?>
     </address>
-    <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2">
+    <dl class="grid grid-cols-[auto_1fr] gap-y-1 gap-x-2 items-baseline">
         <?php if ($hours = $storeInfo->getHours()): ?>
             <dt class="text-slate-600 text-sm"><?= $escaper->escapeHtml(__('Opening Hours')) ?>:</dt>
             <dd><?= $escaper->escapeHtml($hours); ?></dd>
