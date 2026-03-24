@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.2...main
 
+### Changed
+
+- Store notices are now disabled by default [#12](https://github.com/Siteation/magento2-storeinfo/pull/12).
+  This respects merchant control and avoids surprises during upgrades (thanks to @erwinromkes).
+
 ## [4.0.2] - 2026-02-14
 
 ### Added
