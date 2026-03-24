@@ -9,7 +9,7 @@
                 <enabled>1</enabled>
             </schema_data>
             <notices>
-                <enabled>1</enabled>
+                <enabled>0</enabled>
                 <message>Hello There, this your notices, sales, update e.t.c.</message>
             </notices>
             <opening_hours>
