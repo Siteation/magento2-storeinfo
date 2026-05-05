@@ -3,9 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
-    <move element="storeinfo.address" destination="footer-content"/>
-    <move element="storeinfo.hours" destination="footer-content"/>
-    <move element="storeinfo.socials" destination="footer-content"/>
+<body>
+    <move element="storeinfo.address" destination="footer-columns" />
+    <move element="storeinfo.hours" destination="footer-columns" />
+    <move element="storeinfo.socials" destination="footer-columns" />
 
     <referenceBlock name="storeinfo.notice">
         <arguments>
@@ -30,4 +31,5 @@
             <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
         </arguments>
     </referenceBlock>
+    </body>
 </page>
