@@ -1,0 +1,52 @@
+{
+  "name": "address",
+  "label": "Address",
+  "icon": "fa-solid fa-location-dot",
+  "category": "storeinfo",
+  "sortOrder": 10,
+  "isContainer": false,
+  "parents": {"defaultPolicy": "allow"},
+  "children": {"defaultPolicy": "deny"},
+  "template": "Siteation_StoreInfo::component/address.phtml",
+  "fields": {
+    "content": {
+      "heading": {
+        "label": "Heading",
+        "type": "text",
+        "translate": true,
+        "position": 10,
+        "note": "Leave empty to use the store name."
+      },
+      "show_phone": {
+        "label": "Show phone / WhatsApp",
+        "type": "toggle",
+        "default": true,
+        "position": 20
+      },
+      "show_email": {
+        "label": "Show email",
+        "type": "toggle",
+        "default": true,
+        "position": 30
+      },
+      "show_legal": {
+        "label": "Show VAT / CoC / IBAN",
+        "type": "toggle",
+        "default": false,
+        "position": 40
+      }
+    },
+    "advanced": {
+      "css_classes": {
+        "label": "CSS classes",
+        "type": "text",
+        "position": 10
+      }
+    }
+  },
+  "defaults": {
+    "show_phone": true,
+    "show_email": true,
+    "show_legal": false
+  }
+}

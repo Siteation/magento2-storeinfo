@@ -1,0 +1,45 @@
+{
+  "name": "socials",
+  "label": "Socials",
+  "icon": "fa-solid fa-share-nodes",
+  "category": "storeinfo",
+  "sortOrder": 30,
+  "isContainer": false,
+  "parents": {"defaultPolicy": "allow"},
+  "children": {"defaultPolicy": "deny"},
+  "template": "Siteation_StoreInfo::component/socials.phtml",
+  "fields": {
+    "content": {
+      "heading": {
+        "label": "Heading",
+        "type": "text",
+        "translate": true,
+        "position": 10
+      }
+    },
+    "design": {
+      "icon_size": {
+        "label": "Icon size",
+        "type": "select",
+        "position": 10,
+        "default": "24",
+        "options": [
+          {"value": "20", "label": "Small"},
+          {"value": "24", "label": "Medium"},
+          {"value": "32", "label": "Large"}
+        ]
+      }
+    },
+    "advanced": {
+      "css_classes": {
+        "label": "CSS classes",
+        "type": "text",
+        "position": 10
+      }
+    }
+  },
+  "defaults": {
+    "heading": "Follow us",
+    "icon_size": "24"
+  }
+}

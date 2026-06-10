@@ -1,0 +1,76 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ *
+ * Nebula Content "address" component. Renders the rich Siteation store information.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Qoliber\NebulaComponent\Model\ViewModelRegistry $viewModels
+ */
+
+use Siteation\StoreInfo\ViewModel\StoreInfo;
+
+$data = ($block->getData('node') ?? [])['data'] ?? [];
+$info = $viewModels->require(StoreInfo::class);
+
+$heading   = (string) ($data['heading'] ?? '') ?: $info->getStoreName();
+$showPhone = !array_key_exists('show_phone', $data) || !empty($data['show_phone']);
+$showEmail = !array_key_exists('show_email', $data) || !empty($data['show_email']);
+$showLegal = !empty($data['show_legal']);
+
+$classes = array_filter(['nebula-address', $data['css_classes'] ?? '']);
+?>
+<div class="<?= $escaper->escapeHtmlAttr(implode(' ', $classes)) ?>">
+    <?php if ($heading !== '') : ?>
+        <h3 class="nebula-address-heading mb-3 text-sm font-semibold uppercase tracking-wide text-gray-700"><?= $escaper->escapeHtml($heading) ?></h3>
+    <?php endif; ?>
+
+    <address class="nebula-address-body not-italic text-gray-600">
+        <?php if ($line1 = $info->getStreetLine1()) : ?>
+            <span class="block"><?= $escaper->escapeHtml($line1) ?></span>
+        <?php endif; ?>
+        <?php if ($line2 = $info->getStreetLine2()) : ?>
+            <span class="block"><?= $escaper->escapeHtml($line2) ?></span>
+        <?php endif; ?>
+        <?php $cityLine = trim($info->getPostcode() . ' ' . $info->getCity()); ?>
+        <?php if ($cityLine !== '') : ?>
+            <span class="block"><?= $escaper->escapeHtml($cityLine) ?></span>
+        <?php endif; ?>
+        <?php if ($country = $info->getCountry()) : ?>
+            <span class="block">
+                <?php if ($region = $info->getRegion()) : ?><?= $escaper->escapeHtml($region) ?>, <?php endif; ?>
+                <?= $escaper->escapeHtml($country) ?>
+            </span>
+        <?php endif; ?>
+    </address>
+
+    <?php if ($showPhone || $showEmail || $showLegal) : ?>
+        <dl class="nebula-address-details mt-3 space-y-1 text-gray-600">
+            <?php if ($showPhone && ($phone = $info->getPhone())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('Phone')) ?></dt><dd><a class="hover:text-gray-900" href="tel:<?= $escaper->escapeHtmlAttr($info->formatPhoneNumber($phone)) ?>"><?= $escaper->escapeHtml($phone) ?></a></dd></div>
+            <?php endif; ?>
+            <?php if ($showPhone && ($extra = $info->getExtraPhone())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('Phone')) ?></dt><dd><a class="hover:text-gray-900" href="tel:<?= $escaper->escapeHtmlAttr($info->formatPhoneNumber($extra)) ?>"><?= $escaper->escapeHtml($extra) ?></a></dd></div>
+            <?php endif; ?>
+            <?php if ($showPhone && ($whatsapp = $info->getWhatsApp())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('WhatsApp')) ?></dt><dd><a class="hover:text-gray-900" href="https://wa.me/<?= $escaper->escapeHtmlAttr($info->formatPhoneNumber($whatsapp)) ?>" target="_blank" rel="noopener"><?= $escaper->escapeHtml($whatsapp) ?></a></dd></div>
+            <?php endif; ?>
+            <?php if ($showEmail && ($email = $info->getEmail())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('Email')) ?></dt><dd><a class="hover:text-gray-900" href="mailto:<?= $escaper->escapeHtmlAttr($email) ?>"><?= $escaper->escapeHtml($email) ?></a></dd></div>
+            <?php endif; ?>
+            <?php if ($showLegal && ($vat = $info->getVatNumber())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('VAT')) ?></dt><dd><?= $escaper->escapeHtml($vat) ?></dd></div>
+            <?php endif; ?>
+            <?php if ($showLegal && ($coc = $info->getCoCNumber())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('CoC')) ?></dt><dd><?= $escaper->escapeHtml($coc) ?></dd></div>
+            <?php endif; ?>
+            <?php if ($showLegal && ($iban = $info->getIbanNumber())) : ?>
+                <div class="flex justify-between gap-4"><dt class="text-sm text-gray-500"><?= $escaper->escapeHtml(__('IBAN')) ?></dt><dd><?= $escaper->escapeHtml($iban) ?></dd></div>
+            <?php endif; ?>
+        </dl>
+    <?php endif; ?>
+</div>

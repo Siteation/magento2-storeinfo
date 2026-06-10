@@ -1,0 +1,41 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ *
+ * Nebula Content "hours" component. Renders configured daily opening hours.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Qoliber\NebulaComponent\Model\ViewModelRegistry $viewModels
+ */
+
+use Siteation\StoreInfo\ViewModel\StoreInfoHours;
+
+$data = ($block->getData('node') ?? [])['data'] ?? [];
+$hours = $viewModels->require(StoreInfoHours::class);
+
+$heading = (string) ($data['heading'] ?? '');
+$days    = $hours->getOpeningHours();
+$classes = array_filter(['nebula-hours', $data['css_classes'] ?? '']);
+?>
+<div class="<?= $escaper->escapeHtmlAttr(implode(' ', $classes)) ?>">
+    <?php if ($heading !== '') : ?>
+        <h3 class="nebula-hours-heading mb-3 text-sm font-semibold uppercase tracking-wide text-gray-700"><?= $escaper->escapeHtml($heading) ?></h3>
+    <?php endif; ?>
+
+    <?php if ($days) : ?>
+        <dl class="nebula-hours-list space-y-1 text-gray-600">
+            <?php foreach ($days as $day) : ?>
+                <div class="flex justify-between gap-4">
+                    <dt class="font-medium text-gray-900"><?= $escaper->escapeHtml($hours->getFullNameOfDay($day['day'] ?? '')) ?></dt>
+                    <dd><?= $escaper->escapeHtml($day['hours'] ?? '') ?></dd>
+                </div>
+            <?php endforeach; ?>
+        </dl>
+    <?php elseif ($fallback = $hours->getHours()) : ?>
+        <p class="nebula-hours-fallback text-gray-600"><?= $escaper->escapeHtml($fallback) ?></p>
+    <?php endif; ?>
+</div>

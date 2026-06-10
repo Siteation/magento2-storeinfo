@@ -1,0 +1,31 @@
+{
+  "name": "hours",
+  "label": "Hours",
+  "icon": "fa-solid fa-clock",
+  "category": "storeinfo",
+  "sortOrder": 20,
+  "isContainer": false,
+  "parents": {"defaultPolicy": "allow"},
+  "children": {"defaultPolicy": "deny"},
+  "template": "Siteation_StoreInfo::component/hours.phtml",
+  "fields": {
+    "content": {
+      "heading": {
+        "label": "Heading",
+        "type": "text",
+        "translate": true,
+        "position": 10
+      }
+    },
+    "advanced": {
+      "css_classes": {
+        "label": "CSS classes",
+        "type": "text",
+        "position": 10
+      }
+    }
+  },
+  "defaults": {
+    "heading": "Opening hours"
+  }
+}

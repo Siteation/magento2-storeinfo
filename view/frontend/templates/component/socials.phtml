@@ -1,0 +1,51 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ *
+ * Nebula Content "socials" component. Renders configured social profiles as inline SVG
+ * icons from the module sprite (no icon font, CSP-safe).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Qoliber\NebulaComponent\Model\ViewModelRegistry $viewModels
+ */
+
+use Siteation\StoreInfo\ViewModel\StoreInfoSocials;
+
+$data = ($block->getData('node') ?? [])['data'] ?? [];
+$list = $viewModels->require(StoreInfoSocials::class)->getList();
+
+$heading  = (string) ($data['heading'] ?? '');
+$iconSize = (int) ($data['icon_size'] ?? 24) ?: 24;
+$sprite   = $block->getViewFileUrl('Siteation_StoreInfo::images/socials.svg');
+$classes  = array_filter(['nebula-socials', $data['css_classes'] ?? '']);
+?>
+<div class="<?= $escaper->escapeHtmlAttr(implode(' ', $classes)) ?>">
+    <?php if ($heading !== '') : ?>
+        <h3 class="nebula-socials-heading mb-3 text-sm font-semibold uppercase tracking-wide text-gray-700"><?= $escaper->escapeHtml($heading) ?></h3>
+    <?php endif; ?>
+
+    <?php if ($list) : ?>
+        <ul class="nebula-socials-links flex flex-wrap gap-4">
+            <?php foreach ($list as $social) : ?>
+                <li>
+                    <a
+                        class="inline-flex text-gray-600 transition-transform hover:scale-90 hover:text-gray-900"
+                        href="<?= $escaper->escapeUrl($social['link']) ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="<?= $escaper->escapeHtmlAttr($social['title']) ?>"
+                    >
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="<?= $escaper->escapeHtmlAttr($iconSize) ?>" height="<?= $escaper->escapeHtmlAttr($iconSize) ?>" fill="currentColor" aria-hidden="true">
+                            <use href="<?= $escaper->escapeUrl($sprite) ?>#<?= $escaper->escapeHtmlAttr($social['type']) ?>" />
+                        </svg>
+                        <span class="sr-only"><?= $escaper->escapeHtml($social['title']) ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>
