@@ -42,11 +42,16 @@ $address = array_filter([
     'addressCountry' => $storeInfo->getCountryId()
 ]);
 
-$openingHoursSchema = $storeInfoHours->enabled() ? [] : $storeInfoHours->getHours();
+$openingHoursSchema = [];
 if ($storeInfoHours->enabled()) {
-    foreach ($storeInfoHours->getOpeningHours() as $entry) {
-        $openingHoursSchema[] = sprintf('%s %s', $entry['day'], $entry['hours']);
+    foreach ($storeInfoHours->getDailyHours() as $entry) {
+        if (!empty($entry['day']) && !empty($entry['hours'])) {
+            $openingHoursSchema[] = sprintf('%s %s', $entry['day'], $entry['hours']);
+        }
     }
+}
+if (!$openingHoursSchema) {
+    $openingHoursSchema = $storeInfoHours->getHours();
 }
 
 $schema = array_filter([
