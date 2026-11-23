@@ -35,7 +35,7 @@ class DayOfTheWeekColumn extends Select
         return [
             ['label' => __('Monday'), 'value' => 'Mo'],
             ['label' => __('Tuesday'), 'value' => 'Tu'],
-            ['label' => __('Wensday'), 'value' => 'We'],
+            ['label' => __('Wednesday'), 'value' => 'We'],
             ['label' => __('Thursday'), 'value' => 'Th'],
             ['label' => __('Friday'), 'value' => 'Fr'],
             ['label' => __('Saturday'), 'value' => 'Sa'],
