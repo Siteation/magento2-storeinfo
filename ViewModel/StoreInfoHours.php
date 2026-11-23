@@ -31,12 +31,16 @@ class StoreInfoHours implements ArgumentInterface
     }
 
     /**
-     * Returns raw list of opening hours as a array
+     * Returns raw list of opening hours as a array. Blank or invalid values give an empty list.
      */
     public function getDailyHours(): array
     {
         $dailyHours = $this->moduleConfig->getStoreInfoHours('daily_hours');
-        return is_string($dailyHours) ? json_decode($dailyHours, true) : (array) $dailyHours;
+        if (is_string($dailyHours)) {
+            $dailyHours = json_decode($dailyHours, true);
+        }
+
+        return is_array($dailyHours) ? array_filter($dailyHours, 'is_array') : [];
     }
 
     public function getFullNameOfDay($dayCode): string

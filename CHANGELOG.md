@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.2...main
 
+### Fixed
+
+- A blank or invalid `daily_hours` no longer breaks every page and falls back to the general store hours. Days without hours are left out of the schema openingHours [#14](https://github.com/Siteation/magento2-storeinfo/issues/14).
+
 ### Changed
 
 - Store notices are now disabled by default [#12](https://github.com/Siteation/magento2-storeinfo/pull/12).
