@@ -13,13 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [4.0.3]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.2...4.0.3
 
-### Changed
-
-- Store notices are now disabled by default [#12](https://github.com/Siteation/magento2-storeinfo/pull/12).
-  This respects merchant control and avoids surprises during upgrades (thanks to @erwinromkes).
-
 ### Fixed
 
+- On Hyvä, the address, hours and socials blocks now render in the footer columns instead of the footer content, and the layout files carry the missing `<body>` wrapper.
 - The default opening hours listed Thursday twice and no Tuesday. They now run Monday to Friday in order [#13](https://github.com/Siteation/magento2-storeinfo/pull/13).
 - The day dropdown in Daily Hours read "Wensday". It now reads "Wednesday" [#13](https://github.com/Siteation/magento2-storeinfo/pull/13).
 - A blank or invalid `daily_hours` no longer breaks every page and falls back to the general store hours. Days without hours are left out of the schema openingHours [#14](https://github.com/Siteation/magento2-storeinfo/issues/14), [#15](https://github.com/Siteation/magento2-storeinfo/pull/15).
